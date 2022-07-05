@@ -26,23 +26,18 @@
             </ol>
         </nav>
         <div class="px-5 py-4">
-            <h4 style="text-align: justify; text-justify: inter-word;">The UiTM Club Activities Approval System aims to help streamline club activities application process.
-            This system was created to ease the process of club activity proposal. The system features tracking, which would enable the users to learn about the
-            current status of the applications.</h4>
+            <h4 style="text-align: justify; text-justify: inter-word;">The UiTM Club Activities Attendance System aims to help streamline club activities attendance process.
+            This system was created to ease the process of club activity attendance. The system features a lot of useful features which would enable the users to easily mark
+            their attendance without hassle.</h4>
         </div>
         <div class="px-5 py-4">
-            <h5>This system was created by: </h5>
-            <p>MEGAT AL ZHAHIR DANIEL BIN MEGAT NOR MAZLAN (2020878518)</p>
-            <p>FARAH NATASHA BINTI MUHAMAD HAZRIN (2020898386)</p>
-            <p>NUR NABILAH BINTI SHAARI (2020489836)</p>
-            <p>SITI SYAHIRAH BINTI AHMADLKUSHAIRY (2020819788)</p>
-            <p>NUR ASNA BINTI FADZIL (2021857372)</p>
-            <p>AZIZAH BINTI AZAHAR (2021620258)</p>
+            <h5>This system is a fork by: </h5>
+            <p>DIGITTEND SYSTEMS SDN. BHD.</p>
 
             <h5>and is licensed under the:</h5>
             <p>GNU General Public License v3.0</p>
 
-            <p>The source code for this project can be found <a href="https://github.com/mfnsaz/csc443project">here</a>.</p>
+            <p>The source code for this project can be found <a href="https://github.com/digittend/clubattendance">here</a>.</p>
         </div>
         <?php
             include("../header/footer.php");
