@@ -5,7 +5,7 @@ ISP550 final project. Using the XAMP stack (X for the OS (Windows, Linux), A for
 There are several steps you must take in order to setup this system in your system.
 
 ### Cloning the repository
-You can clone this repository using `git clone https://github.com/mnfsaz/csc443project`
+You can clone this repository using `git clone https://github.com/digittend/clubattendance`
 
 ### Setting up the Database
 Install MySQL and optionally PHPMyAdmin. Then, run the SQL file located in the SQL subfolder.
