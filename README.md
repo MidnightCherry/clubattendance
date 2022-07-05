@@ -1,4 +1,4 @@
-#UiTM Club Activities Attendance System
+# UiTM Club Activities Attendance System
 ISP550 final project. Using the XAMP stack (X for the OS (Windows, Linux), A for Apache, M for MySQL, and P for PHP) to build a club activities attendance system.
 
 ## Installation
