@@ -1,5 +1,5 @@
-# CSC443 Project - UiTM Club Activities Application System
-CSC443 final project. Using the XAMP stack (X for the OS (Windows, Linux), A for Apache, M for MySQL, and P for PHP) to build a club activities application system.
+#UiTM Club Activities Attendance System
+ISP550 final project. Using the XAMP stack (X for the OS (Windows, Linux), A for Apache, M for MySQL, and P for PHP) to build a club activities attendance system.
 
 ## Installation
 There are several steps you must take in order to setup this system in your system.
