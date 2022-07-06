@@ -5,12 +5,16 @@
         public $conn;
         public $outputArray;
         public $currDate;
-        function __construct($dbConnection, $currentDate){
+        public $attendeeId;
+        public $appId;
+        function __construct($dbConnection, $currentDate, $attendeeID, $applicationID){
             $this->conn = $dbConnection;
             $this->currDate = $currentDate;
+            $this->attendeeId = $attendeeID;
+            $this->appId = $applicationID;
 
-            $trackingSql = "SELECT a.app_name, c.club_name, a.app_startDate, a.app_endDate, a.app_time FROM applications AS a JOIN students AS s ON s.student_id = a.student_id JOIN clubs AS c ON c.club_id = s.club_id WHERE approved = 1";
-            $res = mysqli_query($this->conn, $trackingSql);
+            $activitiesSql = "SELECT a.app_name, c.club_name, a.app_startDate, a.app_endDate, a.app_time, a.application_id FROM applications AS a JOIN students AS s ON s.student_id = a.student_id JOIN clubs AS c ON c.club_id = s.club_id WHERE approved = 1";
+            $res = mysqli_query($this->conn, $activitiesSql);
             if(!is_bool($res)){
                 $rowArray = array();
                 $resArr = mysqli_fetch_all($res);
@@ -25,11 +29,11 @@
                     $dateThen = strtotime($currRowColumn[3]);
                     $dateNow = strtotime($this->currDate);
                     if($dateNow < $dateThen){
-                        array_push($columnArray, '<button class="d-grid mx-auto btn btn-danger" style="display: block;" id="viewAppButton">Attendance Not Open</button>');
-                    } else if($dateNow > $dateThen){
-                        array_push($columnArray, '<button class="d-grid mx-auto btn btn-danger" style="display: block;" id="viewAppButton">Attendance Closed</button>');
+                        array_push($columnArray, '<button class="d-grid mx-auto btn btn-danger" style="display: block;" id="attButtonClosed" disabled>Attendance Not Open</button>');
+                    } else if($dateNow > $dateThen || $this->getIfAttendedActivity($this->appId)){
+                        array_push($columnArray, '<button class="d-grid mx-auto btn btn-danger" style="display: block;" id="attButtonClosed" disabled>Attendance Closed</button>');
                     } else {
-                        array_push($columnArray, '<button class="d-grid mx-auto btn btn-primary" style="display: block;" id="viewAppButton">Fill Attendance</button>');
+                        array_push($columnArray, '<button class="d-grid mx-auto btn btn-primary" style="display: block;" id="attButton">Fill Attendance</button>');
                     }
                     array_push($rowArray, $columnArray);
                 }
@@ -37,6 +41,26 @@
                     "data" => $rowArray
                 );
                 return true;
+            } else {
+                return false;
+            }
+        }
+
+        function getIfAttendedActivity($application_id){
+            if($this->attendeeId == null){
+                $attendanceSql = "SELECT COUNT(attendee_id) FROM attendance WHERE application_id = $application_id";
+            } else {
+                $attendanceSql = "SELECT COUNT(attendee_id) FROM attendance WHERE application_id = $application_id AND attendee_id = ".$this->attendeeId;
+            }
+
+            $res = mysqli_query($this->conn, $attendanceSql);
+            if(!is_bool($res)){
+                $resArr = mysqli_fetch_array($res);
+                if(sizeof($resArr) > 0){
+                    return true;
+                } else {
+                    return false;
+                }
             } else {
                 return false;
             }
@@ -51,8 +75,16 @@
         date_default_timezone_set("Asia/Kuala_Lumpur");
         $dateNow = date('Y-m-d');
         $timeNow = date('H:i:s');
+        $attendeeId = $_SESSION["attendee_id"];
+        $applicationId = $_GET["app_id"];
+        if(!isset($_SESSION["attendee_id"])){
+            $attendeeId = null;
+        }
+        if(!isset($_GET["app_id"])){
+            $applicationId = null;
+        }
         header("Content-Type: application/json");
-        $atvt = new Activities($conn, $dateNow);
+        $atvt = new Activities($conn, $dateNow, $attendeeId, $applicationId);
         echo $atvt->getActivitiesJson();
     }
 ?>

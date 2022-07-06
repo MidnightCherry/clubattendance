@@ -7,6 +7,7 @@
         die();
     }
     $attendeeId = $_SESSION["attendee_id"];
+    $_SESSION["backPage"] = "activitiesList.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,11 +46,8 @@
                     var data = mainTable.row($(this).parents('tr')).data();
 
                     var button = this.id;
-                    if(button == "viewAppButton"){
-                        window.location.href = "applicationDetails.php?app_id="+data[0];
-                    }
-                    if(button == "viewTrkButton"){
-                        window.location.href = "viewTracking.php?app_id="+data[0];
+                    if(button == "attButton"){
+                        window.location.href = "recordAttendance.php?app_id="+data[0];
                     }
                 })
             } );
