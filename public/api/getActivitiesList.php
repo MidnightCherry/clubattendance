@@ -26,8 +26,10 @@
                     array_push($columnArray, $currRowColumn[3]);
                     array_push($columnArray, $currRowColumn[4]);
                     array_push($columnArray, $currRowColumn[5]);
+
                     $dateThen = strtotime($currRowColumn[4]);
                     $dateNow = strtotime($this->currDate);
+
                     if($this->attendeeId != null){
                         $attended = $this->getIfAttendedActivity($this->attendeeId, $currRowColumn[0]);
                         if($attended){
@@ -47,9 +49,6 @@
                 $this->outputArray = array(
                     "data" => $rowArray
                 );
-                return true;
-            } else {
-                return false;
             }
         }
 
@@ -68,6 +67,7 @@
                         return true;
                     }
                 }
+                return false;
             } else {
                 return false;
             }
