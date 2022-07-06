@@ -29,8 +29,8 @@
                     array_push($columnArray, $currRowColumn[5]);
                     $dateThen = strtotime($currRowColumn[3]);
                     $dateNow = strtotime($this->currDate);
-                    if($this->attendeeId != null && $this->appId != null){
-                        $res = $this->getIfAttendedActivity($this->appId, $this->attendeeId);
+                    if($this->attendeeId != null){
+                        $res = $this->getIfAttendedActivity($this->attendeeId);
                         if($res){
                             array_push($columnArray, '<button class="d-grid mx-auto btn btn-success" style="display: block;" id="attButtonClosed" disabled>Attendance Recorded</button>');
                         } else if($dateNow < $dateThen){
@@ -54,11 +54,11 @@
             }
         }
 
-        function getIfAttendedActivity($application_id, $attendeeID){
+        function getIfAttendedActivity($attendeeID){
             if($this->attendeeId == null){
-                $attendanceSql = "SELECT COUNT(attendee_id) FROM attendances WHERE application_id = $application_id";
+                $attendanceSql = "SELECT COUNT(attendee_id) FROM attendances";
             } else {
-                $attendanceSql = "SELECT COUNT(attendee_id) FROM attendances WHERE application_id = $application_id AND attendee_id = $attendeeID";
+                $attendanceSql = "SELECT COUNT(attendee_id) FROM attendances WHERE attendee_id = $attendeeID";
             }
 
             $res = mysqli_query($this->conn, $attendanceSql);
@@ -84,12 +84,8 @@
         $dateNow = date('Y-m-d');
         $timeNow = date('H:i:s');
         $attendeeId = $_SESSION["attendee_id"];
-        $applicationId = $_GET["app_id"];
         if(!isset($_SESSION["attendee_id"])){
             $attendeeId = null;
-        }
-        if(!isset($_GET["app_id"])){
-            $applicationId = null;
         }
         header("Content-Type: application/json");
         $atvt = new Activities($conn, $dateNow, $attendeeId, $applicationId);
