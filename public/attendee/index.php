@@ -33,7 +33,7 @@
                     <h4 class="pb-4">Available actions:</h4>
                     <div class="col p-2">
                         <b class="pb-2">View activity list: </b>
-                        <button type="button" class="btn btn-primary" onclick="location.href='/attendees/activitiesList.php';">View Application List</button>
+                        <button type="button" class="btn btn-primary" onclick="location.href='/attendee/activitiesList.php';">View Application List</button>
                     </div>
                 </div>
             </div>
