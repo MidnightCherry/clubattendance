@@ -55,18 +55,18 @@
 
         function getIfAttendedActivity($attendeeID, $applicationID){
             if($this->attendeeId == null){
-                $attendanceSql = "SELECT COUNT(attendee_id) FROM attendances";
+                $attendanceSql = "SELECT COUNT(attendee_id) FROM attendances WHERE application_id = $applicationID";
             } else {
-                $attendanceSql = "SELECT COUNT(attendee_id) FROM attendances WHERE attendee_id = $attendeeID AND application_id = $applicationID";
+                $attendanceSql = "SELECT COUNT(attendee_id) FROM attendances WHERE application_id = $applicationID AND attendee_id = $attendeeID";
             }
 
             $res = mysqli_query($this->conn, $attendanceSql);
             if(!is_bool($res)){
-                $resArr = mysqli_fetch_array($res);
-                if(sizeof($resArr) > 0){
-                    return true;
-                } else {
-                    return false;
+                $resArr = mysqli_fetch_all($res);
+                foreach($resArr as $currArr){
+                    if($currArr > 0){
+                        return true;
+                    }
                 }
             } else {
                 return false;
