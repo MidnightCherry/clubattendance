@@ -2,6 +2,8 @@
     require_once "../public/inc/connect.php";
     $password = password_hash("digittend@1912", PASSWORD_DEFAULT);
     $email = "admin@isp.alz.moe";
+    $name = "Admin";
+    $tel = "0123456789";
     $role = 0;
 
     $signUpSQL = "INSERT INTO users (user_email, user_pass, user_type) VALUES (?, ?, ?)";
