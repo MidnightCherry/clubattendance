@@ -42,13 +42,8 @@
                                     },
                                     dom: 'Bfrtip',
                                     buttons: [
-<<<<<<< HEAD
-                                            'print'
-                                    ]
-=======
                                         'print'
                                     ],
->>>>>>> 9fd5023d9b4e8cf364c9b56657f31690fffd01c0
                                 });
                 $("#appTable tbody").on('click', 'button', function() {
                     var data = mainTable.row($(this).parents('tr')).data();
