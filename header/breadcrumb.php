@@ -70,6 +70,8 @@
                     continue;
                 } else if($currPage == "home"){
                     array_push($crumbArr, "/");
+                } else if($currPage == "..."){
+                    array_push($crumbArr, "...");
                 } else {
                     array_push($crumbArr, $currPage);
                 }
@@ -92,6 +94,9 @@
                     array_push($urlArr, $str);
                     $i++;
                     continue;
+                } else if($currPage == "..."){
+                    array_push($urlArr, "noURL");
+                    $i++;
                 } else {
                     $str = $str."/".$currPage;
                     array_push($urlArr, $str);
@@ -135,6 +140,9 @@
         foreach($crumbStr as $currPage){
             if($i != ($crumbStrC-1)){
                 echo "<li class=\"breadcrumb-item\" aria-current=\"page\"><a href=\"".$crumbUrl[$i]."\">".$currPage."</a></li>";
+                $i++;
+            } else if ($crumbUrl[$i] == "noURL"){
+                echo "<li class=\"breadcrumb-item active\" aria-current=\"page\">".$currPage."</li>";
                 $i++;
             } else {
                 echo "<li class=\"breadcrumb-item active\" aria-current=\"page\">".$currPage."</li>";
