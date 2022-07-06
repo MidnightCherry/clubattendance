@@ -36,10 +36,11 @@
                                         url: '/api/getApplicationList.php',
                                         responsive: true,
                                         dataSrc: 'data',
-                                        buttons: [
+                                    },
+                                    dom: 'Bfrtip',
+                                    buttons: [
                                             'print'
-                                        ],
-                                    }
+                                    ]
                                 });
                 $("#appTable tbody").on('click', 'button', function() {
                     var data = mainTable.row($(this).parents('tr')).data();
