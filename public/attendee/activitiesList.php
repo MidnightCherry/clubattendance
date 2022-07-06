@@ -98,6 +98,7 @@
             <table id="appTable" class="table table-bordered table-hover dt-responsive">
                 <thead>
                     <tr>
+                        <th>Application ID</th>
                         <th>Application Name</th>
                         <th>Club Name</th>
                         <th>Date Start</th>
@@ -108,6 +109,7 @@
                 </thead>
                 <tfoot>
                     <tr>
+                        <th>Application ID</th>
                         <th>Application Name</th>
                         <th>Club Name</th>
                         <th>Date Start</th>

@@ -13,7 +13,7 @@
             $this->attendeeId = $attendeeID;
             $this->appId = $applicationID;
 
-            $activitiesSql = "SELECT a.app_name, c.club_name, a.app_startDate, a.app_endDate, a.app_time, a.application_id FROM applications AS a JOIN students AS s ON s.student_id = a.student_id JOIN clubs AS c ON c.club_id = s.club_id WHERE approved = 1";
+            $activitiesSql = "SELECT a.application_id, a.app_name, c.club_name, a.app_startDate, a.app_endDate, a.app_time FROM applications AS a JOIN students AS s ON s.student_id = a.student_id JOIN clubs AS c ON c.club_id = s.club_id WHERE approved = 1";
             $res = mysqli_query($this->conn, $activitiesSql);
             if(!is_bool($res)){
                 $rowArray = array();
@@ -26,6 +26,7 @@
                     array_push($columnArray, $currRowColumn[2]);
                     array_push($columnArray, $currRowColumn[3]);
                     array_push($columnArray, $currRowColumn[4]);
+                    array_push($columnArray, $currRowColumn[5]);
                     $dateThen = strtotime($currRowColumn[3]);
                     $dateNow = strtotime($this->currDate);
                     if($dateNow < $dateThen){
