@@ -269,7 +269,7 @@
                     }
                 } else if ($role == 3){
                     //attendees
-                    $attendeeSignUpSQL = "INSERT INTO attendees (attendee_name, attendee_telno, attendee_course, user_id) VALUES (?, ?, ?)";
+                    $attendeeSignUpSQL = "INSERT INTO attendees (attendee_name, attendee_telno, attendee_course, user_id) VALUES (?, ?, ?, ?)";
                     if ($stmt=mysqli_prepare($conn, $attendeeSignUpSQL)){
                         mysqli_stmt_bind_param($stmt, "sssi", $att_name, $att_telno, $att_course, $u_id);
 
