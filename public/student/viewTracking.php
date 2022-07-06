@@ -114,9 +114,6 @@
                 </tfoot>
             </table>
         </div>
-        <div class="px-5">
-            <button type="button" class="btn btn-primary" onclick="location.href='/student/attendanceList.php?app_id=<?php echo $appId ?>';">View Attendance List</button>
-        </div>
         <?php
             include("../../header/footer.php");
         ?>
