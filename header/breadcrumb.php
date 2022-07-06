@@ -95,7 +95,7 @@
                     $i++;
                     continue;
                 } else if($currPage == "..."){
-                    array_push($urlArr, "0");
+                    array_push($urlArr, "...");
                     $i++;
                 } else {
                     $str = $str."/".$currPage;
@@ -141,7 +141,7 @@
             if($i != ($crumbStrC-1)){
                 echo "<li class=\"breadcrumb-item\" aria-current=\"page\"><a href=\"".$crumbUrl[$i]."\">".$currPage."</a></li>";
                 $i++;
-            } else if ($crumbUrl[$i] == 0){
+            } else if (strpos($crumbUrl[$i], '...') !== false){
                 echo "<li class=\"breadcrumb-item active\" aria-current=\"page\">".$currPage."</li>";
                 $i++;
             } else {
