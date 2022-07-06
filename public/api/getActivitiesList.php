@@ -29,14 +29,19 @@
                     array_push($columnArray, $currRowColumn[5]);
                     $dateThen = strtotime($currRowColumn[3]);
                     $dateNow = strtotime($this->currDate);
-                    if($this->getIfAttendedActivity($this->appId)){
-                        array_push($columnArray, '<button class="d-grid mx-auto btn btn-success" style="display: block;" id="attButtonClosed" disabled>Attendance Recorded</button>');
-                    } else if($dateNow < $dateThen){
-                        array_push($columnArray, '<button class="d-grid mx-auto btn btn-danger" style="display: block;" id="attButtonClosed" disabled>Attendance Not Open</button>');
-                    } else if($dateNow > $dateThen){
-                        array_push($columnArray, '<button class="d-grid mx-auto btn btn-danger" style="display: block;" id="attButtonClosed" disabled>Attendance Closed</button>');
+                    if($this->attendeeId != null && $this->appId != null){
+                        $res = $this->getIfAttendedActivity($this->appId, $this->attendeeId);
+                        if($res){
+                            array_push($columnArray, '<button class="d-grid mx-auto btn btn-success" style="display: block;" id="attButtonClosed" disabled>Attendance Recorded</button>');
+                        } else if($dateNow < $dateThen){
+                            array_push($columnArray, '<button class="d-grid mx-auto btn btn-danger" style="display: block;" id="attButtonClosed" disabled>Attendance Not Open</button>');
+                        } else if($dateNow > $dateThen){
+                            array_push($columnArray, '<button class="d-grid mx-auto btn btn-danger" style="display: block;" id="attButtonClosed" disabled>Attendance Closed</button>');
+                        } else {
+                            array_push($columnArray, '<button class="d-grid mx-auto btn btn-primary" style="display: block;" id="attButton">Fill Attendance</button>');
+                        }
                     } else {
-                        array_push($columnArray, '<button class="d-grid mx-auto btn btn-primary" style="display: block;" id="attButton">Fill Attendance</button>');
+                        array_push($columnArray, '<button class="d-grid mx-auto btn btn-primary" style="display: block;" id="attButton">Fill Attendance 2</button>');
                     }
                     array_push($rowArray, $columnArray);
                 }
@@ -49,11 +54,11 @@
             }
         }
 
-        function getIfAttendedActivity($application_id){
+        function getIfAttendedActivity($application_id, $attendeeID){
             if($this->attendeeId == null){
                 $attendanceSql = "SELECT COUNT(attendee_id) FROM attendances WHERE application_id = $application_id";
             } else {
-                $attendanceSql = "SELECT COUNT(attendee_id) FROM attendances WHERE application_id = $application_id AND attendee_id = ".$this->attendeeId;
+                $attendanceSql = "SELECT COUNT(attendee_id) FROM attendances WHERE application_id = $application_id AND attendee_id = $attendeeID";
             }
 
             $res = mysqli_query($this->conn, $attendanceSql);
