@@ -74,8 +74,8 @@ $_SESSION["backPage"] = basename($_SERVER['PHP_SELF']);
             </div>
             <div class="tab-pane fade" id="pills-signup" role="tabpanel" aria-labelledby="pills-signup-tab" tabindex="0">
                 <div class="container px-5 my-4">
-                    <h3>Sign Up (Club Representatives Only)</h3>
-                    <p>This form is for club representatives only. Officers and Admins can contact the faculty for help. Please fill in this form to continue.</p>
+                    <h3>Sign Up (Attendees Only)</h3>
+                    <p>This form is for attendees only. Club Representatives and Officers can contact the administrator for help. Please fill in this form to continue.</p>
                     <form id="signupForm" action="doSignUp.php" method="post">
                         <div class="form-floating mb-3">
                             <input class="form-control" name="email" type="email" placeholder="Email Address" required/>
@@ -98,6 +98,10 @@ $_SESSION["backPage"] = basename($_SERVER['PHP_SELF']);
                             <label for="telephone">Telephone</label>
                         </div>
                         <div class="form-floating mb-3">
+                            <input class="form-control" name="courseCode" type="text" placeholder="Course Code" required/>
+                            <label for="courseCode">Course Code</label>
+                        </div>
+                        <div class="form-floating mb-3" hidden>
                             <select class="form-select" name="clubid" id="clublist" aria-label="Club" required>
                                 <option value=""></option>
                                 <!--Code here-->
@@ -108,6 +112,7 @@ $_SESSION["backPage"] = basename($_SERVER['PHP_SELF']);
                         forms to reuse the same code. (cant leave the role POST as null)-->
                         <div class="form-floating mb-3" hidden>
                             <select class="form-select" name="role" aria-label="Role">
+                                <option value="3">Attendee</option>
                                 <option value="0">Student</option>
                                 <option value="1">Admin</option>
                                 <option value="2">Officer</option>

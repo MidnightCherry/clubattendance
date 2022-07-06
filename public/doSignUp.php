@@ -122,6 +122,7 @@
                 $password = password_hash($password, PASSWORD_DEFAULT);
                 $name = $_POST["name"];
                 $tel = $_POST["telephone"];
+                $courseCode = $_POST["courseCode"];
 
                 if ($role < 0 || $role > 2){
                     $_SESSION["userErrCode"] = "INVALID_ROLE";
@@ -253,6 +254,28 @@
 
                         $off_name = $name;
                         $off_telno = $tel;
+                        $u_id = $userId;
+
+                        if(mysqli_stmt_execute($stmt)){
+                            //echo "SUCCESS ADD TO OFFICERS TABLE!<br>";
+                        } else {
+                            $_SESSION["userErrCode"] = "MYSQL_ERROR";
+                            $_SESSION["userErrMsg"] = "MySQL error encountered: ".mysqli_error($conn)." Please contact the administrator if you believe that this should not happen.";
+                            header("refresh:0;url=$backPage?error=true");
+                            die();
+                        }
+
+                        mysqli_stmt_close($stmt);
+                    }
+                } else if ($role == 3){
+                    //attendees
+                    $attendeeSignUpSQL = "INSERT INTO attendees (attendee_name, attendee_telno, attendee_course, user_id) VALUES (?, ?, ?)";
+                    if ($stmt=mysqli_prepare($conn, $attendeeSignUpSQL)){
+                        mysqli_stmt_bind_param($stmt, "sssi", $att_name, $att_telno, $att_course, $u_id);
+
+                        $att_name = $name;
+                        $att_telno = $tel;
+                        $att_course = $courseCode;
                         $u_id = $userId;
 
                         if(mysqli_stmt_execute($stmt)){
