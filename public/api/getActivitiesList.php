@@ -22,7 +22,7 @@
                     array_push($columnArray, $currRowColumn[1]);
                     array_push($columnArray, $currRowColumn[2]);
                     array_push($columnArray, $currRowColumn[3]);
-                    if(($currRowColumn[2] == $dateNow && $currRowColumn[3] > $timeNow) || ($currRowColumn[2] > $dateNow)){
+                    if((strtotime($currRowColumn[2]) == strtotime($dateNow) && strtotime($currRowColumn[3]) > strtotime($timeNow)) || (strtotime($currRowColumn[2]) > strtotime($dateNow))){
                         array_push($columnArray, '<button class="d-grid mx-auto btn btn-danger" style="display: block;" id="viewAppButton">Attendance Closed</button>');
                     } else {
                         array_push($columnArray, '<button class="d-grid mx-auto btn btn-primary" style="display: block;" id="viewAppButton">Fill Attendance</button>');
