@@ -40,7 +40,7 @@
                             array_push($columnArray, '<button class="d-grid mx-auto btn btn-primary" style="display: block;" id="attButton">Fill Attendance</button>');
                         }
                     } else {
-                        array_push($columnArray, $this->attendeeId);
+                        array_push($columnArray, $_SESSION["attendee_id"]);
                     }
                     array_push($rowArray, $columnArray);
                 }
