@@ -48,17 +48,6 @@
                                     },
                                     fixedHeader: true
                                 });
-                $("#appTable tbody").on('click', 'button', function() {
-                    var data = mainTable.row($(this).parents('tr')).data();
-
-                    var button = this.id;
-                    if(button == "viewAppButton"){
-                        window.location.href = "applicationDetails.php?app_id="+data[0];
-                    }
-                    if(button == "viewTrkButton"){
-                        window.location.href = "viewTracking.php?app_id="+data[0];
-                    }
-                })
             } );
         </script>
         <?php
@@ -67,7 +56,7 @@
         <nav class="px-5 py-4" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <?php
-                    $currDir = "/student/.../viewTracking.php/attendanceList.php";
+                    $currDir = "/student/applicationList.php/attendanceList.php";
                     $currUrl = $_SERVER['PHP_HOST'];
                     $pageTitle = "Attendance List";
                     include('../../header/breadcrumb.php');
