@@ -155,9 +155,14 @@
             var roleSelection = document.getElementById('userRole');
             roleSelection.onchange = function(){
                 if(roleSelection.selectedIndex === 1) {
+                    document.getElementById('courseId').style.display = "none";
+                    document.getElementById('courseCode').required = false;
+                    document.getElementById('courseCode').innerText = null;
                     document.getElementById('clubField').style.display = "block";
                     document.getElementById('clublist').required = true;
                 } else if(roleSelection.selectedIndex === 4) {
+                    document.getElementById('clubField').style.display = "none";
+                    document.getElementById('clublist').required = false;
                     document.getElementById('courseId').style.display = "block";
                     document.getElementById('courseCode').required = true;
                 } else {
