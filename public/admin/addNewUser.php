@@ -100,6 +100,10 @@
                     </select>
                     <label for="clubid">Club</label>
                 </div>
+                <div class="form-floating mb-3" id="courseId" style="display: none;">
+                    <input class="form-control" name="courseCode" id="courseCode" type="text" placeholder="Name" required/>
+                    <label for="name">Name</label>
+                </div>
                 <div class="d-grid">
                     <button class="btn btn-primary btn-lg" id="signUpButton" type="submit">Sign Up</button>
                 </div>
@@ -153,9 +157,15 @@
                 if(roleSelection.selectedIndex === 1) {
                     document.getElementById('clubField').style.display = "block";
                     document.getElementById('clublist').required = true;
+                } else if(roleSelection.selectedIndex === 4) {
+                    document.getElementById('courseId').style.display = "block";
+                    document.getElementById('courseCode').required = true;
                 } else {
                     document.getElementById('clubField').style.display = "none";
                     document.getElementById('clublist').required = false;
+                    document.getElementById('courseId').style.display = "none";
+                    document.getElementById('courseCode').required = false;
+                    document.getElementById('courseCode').innerText = null;
                 }
             }
         </script>
