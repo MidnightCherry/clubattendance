@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once "../inc/connect.php";
 
     class Activities {
@@ -6,7 +7,6 @@
         public $outputArray;
         public $currDate;
         public $attendeeId;
-        public $appId;
         function __construct($dbConnection, $currentDate, $attendeeID){
             $this->conn = $dbConnection;
             $this->currDate = $currentDate;
@@ -29,7 +29,7 @@
                     $dateThen = strtotime($currRowColumn[4]);
                     $dateNow = strtotime($this->currDate);
                     if($this->attendeeId != null){
-                        $attended = $this->getIfAttendedActivity($this->attendeeId);
+                        $attended = $this->getIfAttendedActivity($this->attendeeId, $currRowColumn[0]);
                         if($attended){
                             array_push($columnArray, '<button class="d-grid mx-auto btn btn-success" style="display: block;" id="attButtonClosed" disabled>Attendance Recorded</button>');
                         } else if($dateNow < $dateThen){
@@ -53,11 +53,11 @@
             }
         }
 
-        function getIfAttendedActivity($attendeeID){
+        function getIfAttendedActivity($attendeeID, $applicationID){
             if($this->attendeeId == null){
                 $attendanceSql = "SELECT COUNT(attendee_id) FROM attendances";
             } else {
-                $attendanceSql = "SELECT COUNT(attendee_id) FROM attendances WHERE attendee_id = $attendeeID";
+                $attendanceSql = "SELECT COUNT(attendee_id) FROM attendances WHERE attendee_id = $attendeeID AND application_id = $applicationID";
             }
 
             $res = mysqli_query($this->conn, $attendanceSql);
@@ -86,7 +86,6 @@
         if(!isset($_SESSION["attendee_id"])){
             $attendeeId = null;
         }
-        $attendeeId = 1;
         header("Content-Type: application/json");
         $atvt = new Activities($conn, $dateNow, $attendeeId);
         echo $atvt->getActivitiesJson();
