@@ -32,6 +32,7 @@
                         array_push($outputRowData, "Edit Application");
                         array_push($outputRowData, '<button class="d-grid mx-auto btn btn-primary" style="display: block;" id="viewAppButton">Edit Application</button>');
                         array_push($outputRowData, '<button class="d-grid mx-auto btn btn-primary" style="display: block;" id="viewTrkButton">View Tracking</button>');
+                        array_push($outputRowData, '<button class="d-grid mx-auto btn btn-primary" style="display: block;" id="viewAttButton" disabled>View Attendance</button>');
                     } else {
                         //
                         array_push($outputRowData, "Not reviewed");
@@ -45,24 +46,27 @@
                                 array_push($outputRowData, '<button class="d-grid mx-auto btn btn-primary" style="display: block;" id="viewAppButton" data-bs-toggle="tooltip" data-bs-placement="top" title="Already Reviewed">Approve Application</button>');
                             } else if($currApp[5] == 1){
                                 array_push($outputRowData, "Reviewed, Approved");
-                                array_push($outputRowData, '<button class="d-grid mx-auto btn btn-primary" style="display: block;" id="viewAppButton" data-bs-toggle="tooltip" data-bs-placement="top" title="Already Reviewed" disabled>Application Approved</button>');
+                                array_push($outputRowData, '<button class="d-grid mx-auto btn btn-success" style="display: block;" id="viewAppButton" data-bs-toggle="tooltip" data-bs-placement="top" title="Already Reviewed" disabled>Application Approved</button>');
                             } else if($currApp[5] == 0){
                                 array_push($outputRowData, "Reviewed, Rejected");
-                                array_push($outputRowData, '<button class="d-grid mx-auto btn btn-primary" style="display: block;" id="viewAppButton" data-bs-toggle="tooltip" data-bs-placement="top" title="Already Reviewed" disabled>Application Rejected</button>');
+                                array_push($outputRowData, '<button class="d-grid mx-auto btn btn-danger" style="display: block;" id="viewAppButton" data-bs-toggle="tooltip" data-bs-placement="top" title="Already Reviewed" disabled>Application Rejected</button>');
                             }
                         } else if(isset($_GET["student_id"])){
                             if($currApp[5] == NULL){
                                 array_push($outputRowData, "Pending officer approval");
-                                array_push($outputRowData, '<button class="d-grid mx-auto btn btn-primary" style="display: block;" id="viewAppButton" data-bs-toggle="tooltip" data-bs-placement="top" title="Already Reviewed" disabled>Approval Pending</button>');
+                                array_push($outputRowData, '<button class="d-grid mx-auto btn btn-warning" style="display: block;" id="viewAppButton" disabled>Approval Pending</button>');
                                 array_push($outputRowData, '<button class="d-grid mx-auto btn btn-primary" style="display: block;" id="viewTrkButton">View Tracking</button>');
+                                array_push($outputRowData, '<button class="d-grid mx-auto btn btn-primary" style="display: block;" id="viewAttButton" disabled>View Attendance</button>');
                             } else if($currApp[5] == 1){
                                 array_push($outputRowData, "Application approved");
-                                array_push($outputRowData, '<button class="d-grid mx-auto btn btn-primary" style="display: block;" id="viewAppButton" data-bs-toggle="tooltip" data-bs-placement="top" title="Already Reviewed" disabled>Application Approved</button>');
+                                array_push($outputRowData, '<button class="d-grid mx-auto btn btn-success" style="display: block;" id="viewAppButton" disabled>Application Approved</button>');
                                 array_push($outputRowData, '<button class="d-grid mx-auto btn btn-primary" style="display: block;" id="viewTrkButton">View Tracking</button>');
+                                array_push($outputRowData, '<button class="d-grid mx-auto btn btn-primary" style="display: block;" id="viewAttButton">View Attendance</button>');
                             } else if($currApp[5] == 0){
                                 array_push($outputRowData, "Application rejected");
-                                array_push($outputRowData, '<button class="d-grid mx-auto btn btn-primary" style="display: block;" id="viewAppButton" data-bs-toggle="tooltip" data-bs-placement="top" title="Already Reviewed" disabled>Application Rejected</button>');
+                                array_push($outputRowData, '<button class="d-grid mx-auto btn btn-danger" style="display: block;" id="viewAppButton" disabled>Application Rejected</button>');
                                 array_push($outputRowData, '<button class="d-grid mx-auto btn btn-primary" style="display: block;" id="viewTrkButton">View Tracking</button>');
+                                array_push($outputRowData, '<button class="d-grid mx-auto btn btn-primary" style="display: block;" id="viewAttButton" disabled>View Attendance</button>');
                             }
                         } else {
                             array_push($outputRowData, "Reviewed, forwarded to Officer");
@@ -71,8 +75,9 @@
                     } else {
                         if(isset($_GET["student_id"])){
                             array_push($outputRowData, "Application rejected");
-                            array_push($outputRowData, '<button class="d-grid mx-auto btn btn-primary" style="display: block;" id="viewAppButton" data-bs-toggle="tooltip" data-bs-placement="top" title="Already Reviewed" disabled>Application Rejected</button>');
+                            array_push($outputRowData, '<button class="d-grid mx-auto btn btn-danger" style="display: block;" id="viewAppButton" disabled>Application Rejected</button>');
                             array_push($outputRowData, '<button class="d-grid mx-auto btn btn-primary" style="display: block;" id="viewTrkButton">View Tracking</button>');
+                            array_push($outputRowData, '<button class="d-grid mx-auto btn btn-primary" style="display: block;" id="viewAttButton" disabled>View Attendance</button>');
                         } else {
                             array_push($outputRowData, "Reviewed, returned to Student");
                             array_push($outputRowData, '<button class="d-grid mx-auto btn btn-primary" style="display: block;" id="viewAppButton" data-bs-toggle="tooltip" data-bs-placement="top" title="Already Reviewed" disabled>Application Reviewed</button>');
