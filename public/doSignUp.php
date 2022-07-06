@@ -124,7 +124,7 @@
                 $tel = $_POST["telephone"];
                 $courseCode = $_POST["courseCode"];
 
-                if ($role < 0 || $role > 2){
+                if ($role < 0 || $role > 3){
                     $_SESSION["userErrCode"] = "INVALID_ROLE";
                     $_SESSION["userErrMsg"] = "User role is invalid. Please contact the administrator for further assistance.";
                     header("refresh:0;url=$backPage?error=true");
