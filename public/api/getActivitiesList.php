@@ -65,9 +65,10 @@
                 foreach($resArr as $currArr){
                     if($currArr > 0){
                         return true;
+                    } else {
+                        return false;
                     }
                 }
-                return false;
             } else {
                 return false;
             }
