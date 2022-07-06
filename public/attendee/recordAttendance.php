@@ -25,36 +25,34 @@
     // Include config file
     require_once "../inc/connect.php";
 
-    if($_SERVER["REQUEST_METHOD"] == "POST"){
-        $attendeeId = $_SESSION["attendee_id"];
-        $appId = $_GET["app_id"];
-        //get date and time
-        date_default_timezone_set("Asia/Kuala_Lumpur");
-        $dateNow = date('Y-m-d');
-        $timeNow = date('H:i:s');
+    $attendeeId = $_SESSION["attendee_id"];
+    $appId = $_GET["app_id"];
+    //get date and time
+    date_default_timezone_set("Asia/Kuala_Lumpur");
+    $dateNow = date('Y-m-d');
+    $timeNow = date('H:i:s');
 
-        $addTrackingSQL = "INSERT INTO attendances (attendance_date, attendance_time, attendee_id, application_id) VALUES (?, ?, ?, ?)";
-        if ($stmt=mysqli_prepare($conn, $addTrackingSQL)){
-            mysqli_stmt_bind_param($stmt, "sssi", $at_date, $at_time, $att_id, $app_id);
+    $addTrackingSQL = "INSERT INTO attendances (attendance_date, attendance_time, attendee_id, application_id) VALUES (?, ?, ?, ?)";
+    if ($stmt=mysqli_prepare($conn, $addTrackingSQL)){
+        mysqli_stmt_bind_param($stmt, "sssi", $at_date, $at_time, $att_id, $app_id);
 
-            $at_date = $dateNow;
-            $at_time = $timeNow;
-            $att_id = $attendeeId;
-            $app_id = $appId;
+        $at_date = $dateNow;
+        $at_time = $timeNow;
+        $att_id = $attendeeId;
+        $app_id = $appId;
 
-            if(mysqli_stmt_execute($stmt)){
-                //echo "SUCCESS ADD TO tracking TABLE!<br>";
-            } else {
-                $_SESSION["userErrCode"] = "MYSQL_ERROR";
-                $_SESSION["userErrMsg"] = "MySQL error encountered: ".mysqli_error($conn)." Please contact the administrator if you believe that this should not happen.";
-                header("refresh:0;url=$backPage?error=true");
-                die();
-            }
-
-            mysqli_stmt_close($stmt);
+        if(mysqli_stmt_execute($stmt)){
+            //echo "SUCCESS ADD TO tracking TABLE!<br>";
+        } else {
+            $_SESSION["userErrCode"] = "MYSQL_ERROR";
+            $_SESSION["userErrMsg"] = "MySQL error encountered: ".mysqli_error($conn)." Please contact the administrator if you believe that this should not happen.";
+            header("refresh:0;url=$backPage?error=true");
+            die();
         }
-        $_SESSION["userErrCode"] = "UPDATE_APPLICATION_SUCCESS";
-        $_SESSION["userErrMsg"] = "Application updated. Please wait for the officer to approve or reject the application.";
-        header("refresh:0;url=$backPage?signup=success");
+
+        mysqli_stmt_close($stmt);
     }
+    $_SESSION["userErrCode"] = "UPDATE_APPLICATION_SUCCESS";
+    $_SESSION["userErrMsg"] = "Application updated. Please wait for the officer to approve or reject the application.";
+    header("refresh:0;url=$backPage?signup=success");
 ?>
