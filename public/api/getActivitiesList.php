@@ -33,7 +33,7 @@
                     if($this->attendeeId != null){
                         $attended = $this->getIfAttendedActivity($this->attendeeId, $currRowColumn[0]);
                         if($attended){
-                            array_push($columnArray, '<button class="d-grid mx-auto btn btn-success" style="display: block;" id="attButtonClosed" disabled>Attendance Recorded</button>');
+                            array_push($columnArray, '<button class="d-grid mx-auto btn btn-success" style="display: block;" id="attButtonClosed" disabled>Attendance Recorded '.$attended.'</button>');
                         } else if($dateNow < $dateThen){
                             array_push($columnArray, '<button class="d-grid mx-auto btn btn-danger" style="display: block;" id="attButtonClosed" disabled>Attendance Not Open</button>');
                         } else if($dateNow > $dateThen){
@@ -42,7 +42,7 @@
                             array_push($columnArray, '<button class="d-grid mx-auto btn btn-primary" style="display: block;" id="attButton">Fill Attendance</button>');
                         }
                     } else {
-                        array_push($columnArray, $_SESSION["attendee_id"]);
+                        array_push($columnArray, $this->getIfAttendedActivity($this->attendeeId, $currRowColumn[0]));
                     }
                     array_push($rowArray, $columnArray);
                 }
@@ -61,13 +61,18 @@
 
             $res = mysqli_query($this->conn, $attendanceSql);
             if(!is_bool($res)){
-                $resArr = mysqli_fetch_all($res);
-                foreach($resArr as $currArr){
-                    if($currArr > 0){
-                        return true;
-                    } else {
-                        return false;
+                if($this->attendeeId != null){
+                    $resArr = mysqli_fetch_all($res);
+                    foreach($resArr as $currArr){
+                        if($currArr > 0){
+                            return true;
+                        } else {
+                            return false;
+                        }
                     }
+                } else {
+                    $resArr = mysqli_fetch_all($res);
+                    return $resArr;
                 }
             } else {
                 return false;
