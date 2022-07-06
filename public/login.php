@@ -101,13 +101,6 @@ $_SESSION["backPage"] = basename($_SERVER['PHP_SELF']);
                             <input class="form-control" name="courseCode" type="text" placeholder="Course Code" required/>
                             <label for="courseCode">Course Code</label>
                         </div>
-                        <div class="form-floating mb-3" hidden>
-                            <select class="form-select" name="clubid" id="clublist" aria-label="Club" required>
-                                <option value=""></option>
-                                <!--Code here-->
-                            </select>
-                            <label for="clubid">Club</label>
-                        </div>
                         <!--The code below is left as is to enable the usage of doSignUp.php as a some sort of an API to allow other
                         forms to reuse the same code. (cant leave the role POST as null)-->
                         <div class="form-floating mb-3" hidden>
@@ -147,27 +140,12 @@ $_SESSION["backPage"] = basename($_SERVER['PHP_SELF']);
         <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
         <script type="application/javascript">
-            var xmlhttp = new XMLHttpRequest();
-            var url = "/clubs/getClubId.php";
             document.querySelector(".number").addEventListener("keypress", function (evt) {
                 if (evt.which != 8 && evt.which != 0 && evt.which < 48 || evt.which > 57)
                 {
                     evt.preventDefault();
                 }
             });
-
-            xmlhttp.onreadystatechange = function(){
-                if (this.readyState == 4 && this.status == 200) {
-                    var data = JSON.parse(this.responseText);
-                    var htmlData = "<option value=\"\"></option>";
-                    for(let i = 0; i < data.clubId.length; i++){
-                        htmlData = htmlData.concat("\n", "<option value=\""+data.clubId[i]+"\">"+data.clubName[i]+"</option>\n");
-                    }
-                    document.getElementById("clublist").innerHTML = htmlData;
-                }
-            }
-            xmlhttp.open("GET", url, true);
-            xmlhttp.send();
         </script>
     </body>
 </html>
