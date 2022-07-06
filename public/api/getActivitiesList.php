@@ -64,7 +64,7 @@
                 if($this->attendeeId != null){
                     $resArr = mysqli_fetch_all($res);
                     foreach($resArr as $currArr){
-                        if($currArr > 0){
+                        if($currArr[0] == 1){
                             return true;
                         } else {
                             return false;
@@ -72,7 +72,9 @@
                     }
                 } else {
                     $resArr = mysqli_fetch_all($res);
-                    return $resArr;
+                    foreach($resArr as $currArr){
+                        return $currArr[0];
+                    }
                 }
             } else {
                 return false;
