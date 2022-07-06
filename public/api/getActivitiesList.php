@@ -10,7 +10,7 @@
             $timeNow = date('H:i:s');
             $this->conn = $dbConnection;
 
-            $trackingSql = "SELECT app_name, app_startDate, app_endDate, app_time FROM applications WHERE approved = 1";
+            $trackingSql = "SELECT a.app_name, c.club_name, a.app_startDate, a.app_endDate, a.app_time FROM applications AS a JOIN students AS s ON s.student_id = a.student_id JOIN clubs AS c ON c.club_id = s.club_id WHERE approved = 1";
             $res = mysqli_query($this->conn, $trackingSql);
             if(!is_bool($res)){
                 $rowArray = array();
@@ -22,7 +22,8 @@
                     array_push($columnArray, $currRowColumn[1]);
                     array_push($columnArray, $currRowColumn[2]);
                     array_push($columnArray, $currRowColumn[3]);
-                    if((strtotime($currRowColumn[2]) >= strtotime($dateNow) && strtotime($currRowColumn[3]) > strtotime($timeNow)) || (strtotime($currRowColumn[2]) > strtotime($dateNow))){
+                    array_push($columnArray, $currRowColumn[4]);
+                    if(strtotime($currRowColumn[3]) > strtotime($dateNow)){
                         array_push($columnArray, '<button class="d-grid mx-auto btn btn-danger" style="display: block;" id="viewAppButton">Attendance Closed</button>');
                     } else {
                         array_push($columnArray, '<button class="d-grid mx-auto btn btn-primary" style="display: block;" id="viewAppButton">Fill Attendance</button>');
