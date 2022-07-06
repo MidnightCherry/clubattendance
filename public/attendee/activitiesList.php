@@ -35,7 +35,7 @@
             $(document).ready( function () {
                 var mainTable = $('#appTable').DataTable({
                                     ajax: {
-                                        url: '/api/getApplicationList.php',
+                                        url: '/api/getActivitiesList.php',
                                         responsive: true,
                                         dataSrc: 'data',
                                     },
@@ -100,24 +100,22 @@
             <table id="appTable" class="table table-bordered table-hover dt-responsive">
                 <thead>
                     <tr>
-                        <th>Application ID</th>
                         <th>Application Name</th>
-                        <th>Student Name</th>
                         <th>Club Name</th>
-                        <th>Application Status</th>
-                        <th>View Application</th>
-                        <th>View Tracking</th>
+                        <th>Date Start</th>
+                        <th>Date End</th>
+                        <th>Time</th>
+                        <th>Attendance</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>Application ID</th>
                         <th>Application Name</th>
-                        <th>Student Name</th>
                         <th>Club Name</th>
-                        <th>Application Status</th>
-                        <th>View Application</th>
-                        <th>View Tracking</th>
+                        <th>Date Start</th>
+                        <th>Date End</th>
+                        <th>Time</th>
+                        <th>Attendance</th>
                     </tr>
                 </tfoot>
             </table>
