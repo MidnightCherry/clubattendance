@@ -51,9 +51,9 @@
 
         function getIfAttendedActivity($application_id){
             if($this->attendeeId == null){
-                $attendanceSql = "SELECT COUNT(attendee_id) FROM attendance WHERE application_id = $application_id";
+                $attendanceSql = "SELECT COUNT(attendee_id) FROM attendances WHERE application_id = $application_id";
             } else {
-                $attendanceSql = "SELECT COUNT(attendee_id) FROM attendance WHERE application_id = $application_id AND attendee_id = ".$this->attendeeId;
+                $attendanceSql = "SELECT COUNT(attendee_id) FROM attendances WHERE application_id = $application_id AND attendee_id = ".$this->attendeeId;
             }
 
             $res = mysqli_query($this->conn, $attendanceSql);
