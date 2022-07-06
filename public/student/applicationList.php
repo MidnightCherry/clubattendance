@@ -51,6 +51,9 @@
                     if(button == "viewTrkButton"){
                         window.location.href = "viewTracking.php?app_id="+data[0];
                     }
+                    if(button == "viewAttButton"){
+                        window.location.href = "attendanceList.php?app_id="+data[0];
+                    }
                 })
             } );
         </script>
@@ -107,6 +110,7 @@
                         <th>Application Status</th>
                         <th>View Application</th>
                         <th>View Tracking</th>
+                        <th>View Attendances</th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -118,6 +122,7 @@
                         <th>Application Status</th>
                         <th>View Application</th>
                         <th>View Tracking</th>
+                        <th>View Attendances</th>
                     </tr>
                 </tfoot>
             </table>
