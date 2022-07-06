@@ -23,7 +23,7 @@
                     array_push($columnArray, $currRowColumn[2]);
                     array_push($columnArray, $currRowColumn[3]);
                     array_push($columnArray, $currRowColumn[4]);
-                    if(strtotime($currRowColumn[3]) > strtotime($dateNow)){
+                    if($currRowColumn[3] > $dateNow){
                         array_push($columnArray, '<button class="d-grid mx-auto btn btn-danger" style="display: block;" id="viewAppButton">Attendance Closed</button>');
                     } else {
                         array_push($columnArray, '<button class="d-grid mx-auto btn btn-primary" style="display: block;" id="viewAppButton">Fill Attendance</button>');
