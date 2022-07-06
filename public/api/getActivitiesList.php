@@ -33,7 +33,7 @@
                     if($this->attendeeId != null){
                         $attended = $this->getIfAttendedActivity($this->attendeeId, $currRowColumn[0]);
                         if($attended){
-                            array_push($columnArray, '<button class="d-grid mx-auto btn btn-success" style="display: block;" id="attButtonClosed" disabled>Attendance Recorded '.$attended.'</button>');
+                            array_push($columnArray, '<button class="d-grid mx-auto btn btn-success" style="display: block;" id="attButtonClosed" disabled>Attendance Recorded</button>');
                         } else if($dateNow < $dateThen){
                             array_push($columnArray, '<button class="d-grid mx-auto btn btn-danger" style="display: block;" id="attButtonClosed" disabled>Attendance Not Open</button>');
                         } else if($dateNow > $dateThen){
