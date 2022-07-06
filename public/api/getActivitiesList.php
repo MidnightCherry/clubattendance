@@ -29,9 +29,11 @@
                     array_push($columnArray, $currRowColumn[5]);
                     $dateThen = strtotime($currRowColumn[3]);
                     $dateNow = strtotime($this->currDate);
-                    if($dateNow < $dateThen){
+                    if($this->getIfAttendedActivity($this->appId)){
+                        array_push($columnArray, '<button class="d-grid mx-auto btn btn-success" style="display: block;" id="attButtonClosed" disabled>Attendance Recorded</button>');
+                    } else if($dateNow < $dateThen){
                         array_push($columnArray, '<button class="d-grid mx-auto btn btn-danger" style="display: block;" id="attButtonClosed" disabled>Attendance Not Open</button>');
-                    } else if($dateNow > $dateThen || $this->getIfAttendedActivity($this->appId)){
+                    } else if($dateNow > $dateThen){
                         array_push($columnArray, '<button class="d-grid mx-auto btn btn-danger" style="display: block;" id="attButtonClosed" disabled>Attendance Closed</button>');
                     } else {
                         array_push($columnArray, '<button class="d-grid mx-auto btn btn-primary" style="display: block;" id="attButton">Fill Attendance</button>');
