@@ -67,7 +67,7 @@
         <nav class="px-5 py-4" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <?php
-                    $currDir = "/student/applicationList.php/viewTracking.php/attendanceList.php";
+                    $currDir = "/student/.../viewTracking.php/attendanceList.php";
                     $currUrl = $_SERVER['PHP_HOST'];
                     $pageTitle = "Attendance List";
                     include('../../header/breadcrumb.php');
