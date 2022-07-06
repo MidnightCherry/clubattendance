@@ -1,5 +1,5 @@
 <?php
-
+    require_once "../public/inc/connect.php";
     $password = password_hash("digittend@1912", PASSWORD_DEFAULT);
     $email = "admin@isp.alz.moe";
     $role = 0;
