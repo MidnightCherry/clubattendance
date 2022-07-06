@@ -7,11 +7,10 @@
         public $currDate;
         public $attendeeId;
         public $appId;
-        function __construct($dbConnection, $currentDate, $attendeeID, $applicationID){
+        function __construct($dbConnection, $currentDate, $attendeeID){
             $this->conn = $dbConnection;
             $this->currDate = $currentDate;
             $this->attendeeId = $attendeeID;
-            $this->appId = $applicationID;
 
             $activitiesSql = "SELECT a.application_id, a.app_name, c.club_name, a.app_startDate, a.app_endDate, a.app_time FROM applications AS a JOIN students AS s ON s.student_id = a.student_id JOIN clubs AS c ON c.club_id = s.club_id WHERE approved = 1";
             $res = mysqli_query($this->conn, $activitiesSql);
@@ -27,11 +26,11 @@
                     array_push($columnArray, $currRowColumn[3]);
                     array_push($columnArray, $currRowColumn[4]);
                     array_push($columnArray, $currRowColumn[5]);
-                    $dateThen = strtotime($currRowColumn[3]);
+                    $dateThen = strtotime($currRowColumn[4]);
                     $dateNow = strtotime($this->currDate);
                     if($this->attendeeId != null){
-                        $res = $this->getIfAttendedActivity($this->attendeeId);
-                        if($res){
+                        $attended = $this->getIfAttendedActivity($this->attendeeId);
+                        if($attended){
                             array_push($columnArray, '<button class="d-grid mx-auto btn btn-success" style="display: block;" id="attButtonClosed" disabled>Attendance Recorded</button>');
                         } else if($dateNow < $dateThen){
                             array_push($columnArray, '<button class="d-grid mx-auto btn btn-danger" style="display: block;" id="attButtonClosed" disabled>Attendance Not Open</button>');
@@ -88,7 +87,7 @@
             $attendeeId = null;
         }
         header("Content-Type: application/json");
-        $atvt = new Activities($conn, $dateNow, $attendeeId, $applicationId);
+        $atvt = new Activities($conn, $dateNow, $attendeeId);
         echo $atvt->getActivitiesJson();
     }
 ?>
