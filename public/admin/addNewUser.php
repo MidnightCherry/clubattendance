@@ -89,6 +89,7 @@
                         <option value="0">Student</option>
                         <option value="1">Admin</option>
                         <option value="2">Officer</option>
+                        <option value="3">Attendee</option>
                     </select>
                     <label for="role">Role</label>
                 </div>
