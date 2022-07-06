@@ -86,6 +86,7 @@
         if(!isset($_SESSION["attendee_id"])){
             $attendeeId = null;
         }
+        $attendeeId = 1;
         header("Content-Type: application/json");
         $atvt = new Activities($conn, $dateNow, $attendeeId);
         echo $atvt->getActivitiesJson();
