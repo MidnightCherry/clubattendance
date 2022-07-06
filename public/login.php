@@ -74,8 +74,8 @@ $_SESSION["backPage"] = basename($_SERVER['PHP_SELF']);
             </div>
             <div class="tab-pane fade" id="pills-signup" role="tabpanel" aria-labelledby="pills-signup-tab" tabindex="0">
                 <div class="container px-5 my-4">
-                    <h3>Sign Up (Students Only)</h3>
-                    <p>This form is for students only. Officers and Admins can contact the faculty for help. Please fill in this form to continue.</p>
+                    <h3>Sign Up (Club Representatives Only)</h3>
+                    <p>This form is for club representatives only. Officers and Admins can contact the faculty for help. Please fill in this form to continue.</p>
                     <form id="signupForm" action="doSignUp.php" method="post">
                         <div class="form-floating mb-3">
                             <input class="form-control" name="email" type="email" placeholder="Email Address" required/>
