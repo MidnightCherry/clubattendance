@@ -17,7 +17,7 @@ The database credentials example file can be found at `.ini.example`. If you wis
 Currently, there are no ways to create the first administrator account. You must use MySQL command line or PHPMyAdmin to create your first admin account. In the future, we will provide a default account in the database sql.
 
 ## Accessing the demo
-The project demo can be found [here.](http://dev.csc.alz.moe/)
+The project demo can be found [here.](http://isp.alz.moe/)
 
 ## Contributions
 Please open up an issue first before opening a pull request.
