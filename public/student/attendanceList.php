@@ -71,7 +71,7 @@
             </ol>
         </nav>
         <div class="px-5">
-            <h4>View Applications</h4>
+            <h4>View Attendances</h4>
         </div>
         <br>
         <?php
