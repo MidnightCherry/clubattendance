@@ -144,7 +144,8 @@
         <script type="text/javascript">
             var xmlhttp = new XMLHttpRequest();
             var url = "/clubs/getClubId.php";
-            var currClub = <?php echo $thisApp[3] ?>
+            var currClub = <?php echo $thisApp[3] ?>;
+            
             xmlhttp.onreadystatechange = function(){
                 if (this.readyState == 4 && this.status == 200) {
                     var data = JSON.parse(this.responseText);
