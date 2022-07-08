@@ -164,7 +164,7 @@
             xmlhttp.send();
             $(document).ready(function() {
                 $('#updateForm').on('input change', function() {
-                    if(($('#name').val() != "<?php echo $thisApp[0] ?>") || ($('#email').val() != "<?php echo $thisApp[1] ?>") || ($('#telephone').val() != "<?php echo $thisApp[2] ?>") || ($('#clubid').val() != "<?php echo $thisApp[3] ?>") || ($('#password').val().length == 0)){
+                    if(($('#name').val() != "<?php echo $thisApp[0] ?>") || ($('#email').val() != "<?php echo $thisApp[1] ?>") || ($('#telephone').val() != "<?php echo $thisApp[2] ?>") || ($('#clubid').val() != "<?php echo $thisApp[3] ?>") || ($('#password').val().length != 0)){
                         $('#submitButton').attr('disabled', false);
                     } else {
                         $('#submitButton').attr('disabled', true);
