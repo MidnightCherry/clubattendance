@@ -76,9 +76,25 @@
         //update users table
         $userEmail = $_POST["email"];
         if(!isset($_POST["password"])){
-            $usersSql = "UPDATE users SET user_email = '$userEmail' WHERE user_id = $userId";
+            $usersSql = "UPDATE users SET user_email = $userEmail WHERE user_id = $userId";
         } else {
-            $usersSql = "UPDATE users SET user_email = '$userEmail', user_pass = '$password' WHERE user_id = $userId";
+            $usersSql = "UPDATE users SET user_email = $userEmail, user_pass = $password WHERE user_id = $userId";
+        }
+        $appRes = mysqli_query($conn, $usersSql);
+        if(is_bool($appRes)){
+            if($appRes){
+                //success update
+            } else {
+                $_SESSION["userErrCode"] = "MYSQL_ERROR";
+                $_SESSION["userErrMsg"] = "MySQL error encountered: ".mysqli_error($conn).". Please contact the administrator if you believe that this should not happen.";
+                header("refresh:0;url=$backPage?error=true");
+                die();
+            }
+        } else {
+            $_SESSION["userErrCode"] = "MYSQL_ERROR";
+            $_SESSION["userErrMsg"] = "MySQL error encountered: ".mysqli_error($conn)." Please contact the administrator if you believe that this should not happen.";
+            header("refresh:0;url=$backPage?error=true");
+            die();
         }
         //update respective roles table
         $name = $_POST["name"];
@@ -86,17 +102,17 @@
         $clubId = $_POST["clubid"];
         $course = $_POST["courseCode"];
         switch ($userType){
-            case 0:
-                $roleSql = "UPDATE students SET student_name = '$name', student_telno = '$telno', club_id = $clubId WHERE user_id = $userId";
+            case "0":
+                $roleSql = "UPDATE students SET student_name = $name, student_telno = $telno, club_id = $clubId WHERE user_id = $userId";
                 break;
-            case 1:
-                $roleSql = "UPDATE admins SET admin_name = '$name', admin_telno = '$telno' WHERE user_id = $userId";
+            case "1":
+                $roleSql = "UPDATE admins SET admin_name = $name, admin_telno = $telno WHERE user_id = $userId";
                 break;
-            case 2:
-                $roleSql = "UPDATE officers SET officer_name = '$name', officer_telno = '$telno' WHERE user_id = $userId";
+            case "2":
+                $roleSql = "UPDATE officers SET officer_name = $name, officer_telno = $telno WHERE user_id = $userId";
                 break;
-            case 3:
-                $roleSql = "UPDATE attendees SET attendee_name = '$name', attendee_telno = '$telno', attendee_course = '$course' WHERE user_id = $userId";
+            case "3":
+                $roleSql = "UPDATE attendees SET attendee_name = $name, attendee_telno = $telno, attendee_course = $course WHERE user_id = $userId";
                 break;
             default:
                 break;
