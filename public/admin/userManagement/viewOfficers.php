@@ -68,7 +68,7 @@
             </div>
             <div class="modal-body">
                 <p>Do you really want to delete this user?</p>
-                <b>THIS ACTION IS NOT REVERSIBLE!</b>
+                <b>THIS ACTION IS IRREVERSIBLE!</b>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
