@@ -76,10 +76,10 @@
             mysqli_stmt_close($stmt);
         }
         //update users table
-        if(!isset($_POST["password"]) && strlen($_POST["password"]) < 1){
-            $usersSql = "UPDATE users SET user_email = $email WHERE user_id = $userId";
-        } else {
+        if(isset($_POST["password"]) && strlen($_POST["password"]) > 1){
             $usersSql = "UPDATE users SET user_email = $email, user_pass = $password WHERE user_id = $userId";
+        } else {
+            $usersSql = "UPDATE users SET user_email = $email WHERE user_id = $userId";
         }
         $appRes = mysqli_query($conn, $usersSql);
         if(is_bool($appRes)){
