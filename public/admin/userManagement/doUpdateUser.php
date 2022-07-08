@@ -47,7 +47,7 @@
             $password = password_hash($password, PASSWORD_DEFAULT);
         }
         //check if email would cause duplication
-        $userId = $_POST["editing_user_id"];
+        $userId = $_SESSION["editing_user_id"];
         $emailsql = "SELECT count(user_email) FROM users WHERE user_id = $userId" ;
         if ($stmt=mysqli_prepare($conn, $emailsql)){
             mysqli_stmt_bind_param($stmt, "s", $user_email);
@@ -87,13 +87,13 @@
             } else {
                 $_SESSION["userErrCode"] = "MYSQL_ERROR";
                 $_SESSION["userErrMsg"] = "MySQL error encountered: ".mysqli_error($conn).". Please contact the administrator if you believe that this should not happen.";
-                header("refresh:0;url=$backPage?error=true");
+                header("refresh:0;url=$backPage&error=true");
                 die();
             }
         } else {
             $_SESSION["userErrCode"] = "MYSQL_ERROR";
             $_SESSION["userErrMsg"] = "MySQL error encountered: ".mysqli_error($conn)." Please contact the administrator if you believe that this should not happen.";
-            header("refresh:0;url=$backPage?error=true");
+            header("refresh:0;url=$backPage&error=true");
             die();
         }
         //update respective roles table
