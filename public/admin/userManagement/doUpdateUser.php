@@ -50,7 +50,7 @@
         $userId = $_SESSION["editing_user_id"];
         $emailsql = "SELECT count(user_email) FROM users WHERE NOT user_id = (?)" ;
         if ($stmt=mysqli_prepare($conn, $emailsql)){
-            mysqli_stmt_bind_param($stmt, "s", $user_id);
+            mysqli_stmt_bind_param($stmt, "i", $user_id);
 
             $user_id = $userId;
 
