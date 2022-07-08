@@ -6,6 +6,7 @@
         header("refresh:0;url=/login.php?error=true");
         die();
     }
+    $_SESSION["backPage"] = "viewOfficers.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
