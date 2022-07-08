@@ -94,7 +94,7 @@
                 } else {
                     //invalid userType
                 }
-                $appRes = mysqli_query($conn, $getAppSQL);
+                $appRes = mysqli_query($conn, $getUserSQL);
                 if(!is_bool($appRes)){
                     $appArr = mysqli_fetch_all($appRes);
                     //$appArr = array_values($appArr);
