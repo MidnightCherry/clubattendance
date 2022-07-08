@@ -10,6 +10,13 @@
     if(!isset($_SESSION["backPage"])){
         $backPage = "index.php";
     }
+    if (!isset($_GET["user_id"])){
+        $_SESSION["userErrCode"] = "USER_ID_NOT_SET";
+        $_SESSION["userErrMsg"] = "The required parameter, USER_ID, is not set. Do contact the administrator if you believe that this should not happen.";
+        header("refresh:0;url=$backPage?error=true");
+        die();
+    }
+    $_SESSION["editing_user_id"] = $_GET["user_id"];
     if(!isset($_GET["type"])){
         $_SESSION["userErrCode"] = "USER_TYPE_NOT_SET";
         $_SESSION["userErrMsg"] = "The user type is not set. Do contact the administrator if you believe that this should not happen.";
