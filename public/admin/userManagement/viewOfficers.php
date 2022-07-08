@@ -38,7 +38,7 @@
                 })
                 var mainTable = $('#appTable').DataTable({
                                     ajax: {
-                                        url: '/api/getUserList.php?type=3',
+                                        url: '/api/getUserList.php?type=2',
                                         responsive: true,
                                         dataSrc: 'data',
                                     },
