@@ -40,6 +40,10 @@
                         <b class="pb-2">View, Edit, and Delete Admins: </b>
                         <button type="button" class="btn btn-primary" onclick="location.href='viewAdmins.php';">View Admins</button>
                     </div>
+                    <div class="col p-2">
+                        <b class="pb-2">View, Edit, and Delete Attendees: </b>
+                        <button type="button" class="btn btn-primary" onclick="location.href='viewAttendees.php';">View Attendees</button>
+                    </div>
                 </div>
             </div>
         </div>
