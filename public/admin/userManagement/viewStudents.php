@@ -31,6 +31,7 @@
         <script type="text/javascript">
             const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
             const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+            var dataFirstColumn;
             $(document).ready( function () {
                 const delModal = new bootstrap.Modal('#delModal', {
                     backdrop: 'static'
@@ -47,12 +48,12 @@
                     var data = mainTable.row($(this).parents('tr')).data();
 
                     var button = this.id;
+                    dataFirstColumn = data[0]
                     if(button == "editButton"){
                         window.location.href = "applicationDetails.php?user_id="+data[0];
                     }
                     if(button == "delButton"){
                         delModal.show();
-                        window.location.href = "deleteUser.php?user_id="+data[0];
                     }
                 })
             } );
@@ -70,7 +71,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary">Proceed</button>
+                <button type="button" class="btn btn-primary" onclick="window.location.href = 'deleteUser.php?user_id='+dataFirstColumn;">Proceed</button>
             </div>
             </div>
         </div>
