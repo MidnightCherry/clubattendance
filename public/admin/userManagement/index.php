@@ -6,12 +6,6 @@
         header("refresh:0;url=/login.php?error=true");
         die();
     }
-    if (!isset($_SESSION["club_id"]) || $_SESSION["club_id"] == ""){
-        $_SESSION["userErrCode"] = "CLUB_ID_NOT_SET";
-        $_SESSION["userErrMsg"] = "The session has expired or is invalid. Please login again. Do contact the administrator if you believe that this should not happen.";
-        header("refresh:0;url=/login.php?error=true");
-        die();
-    }
 ?>
 
 <!DOCTYPE html>
