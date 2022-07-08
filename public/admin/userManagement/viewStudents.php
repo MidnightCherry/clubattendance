@@ -67,7 +67,8 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Do you really want to delete this user? THIS ACTION IS NOT REVERSIBLE!
+                <p>Do you really want to delete this user?</p>
+                <b>THIS ACTION IS NOT REVERSIBLE!</b>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
