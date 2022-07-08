@@ -21,6 +21,9 @@
                 } else if($this->mode == 2){
                     //officer
                     $itemListSql = "SELECT u.user_id, u.user_email, o.officer_name, o.officer_telno FROM users AS u JOIN officers AS o ON u.user_id = o.user_id";
+                } else if($this->mode == 3){
+                    //attendees
+                    $itemListSql = "SELECT u.user_id, u.user_email, a.attendee_name, a.attendee_telno, a.attendee_course FROM users AS u JOIN attendees AS a ON u.user_id = a.user_id";
                 } else {
                     $itemListSql = "SELECT u.user_id, u.user_email FROM users AS u";
                 }
@@ -31,6 +34,18 @@
                     $resArr = mysqli_fetch_all($res);
                     $resArr = array_values($resArr);
                     if($this->mode == 0){
+                        foreach($resArr as $currRowColumn){
+                            $columnArray = array();
+                            array_push($columnArray, $currRowColumn[0]);
+                            array_push($columnArray, $currRowColumn[1]);
+                            array_push($columnArray, $currRowColumn[2]);
+                            array_push($columnArray, $currRowColumn[3]);
+                            array_push($columnArray, $currRowColumn[4]);
+                            array_push($columnArray, '<button class="d-grid mx-auto btn btn-primary" style="display: block;" id="editButton">Edit Student</button>
+                                                        <br><button class="d-grid mx-auto btn btn-danger" style="display: block;" id="delButton">Delete Student</button>');
+                            array_push($rowArray, $columnArray);
+                        }
+                    } else if($this->mode == 3){
                         foreach($resArr as $currRowColumn){
                             $columnArray = array();
                             array_push($columnArray, $currRowColumn[0]);
