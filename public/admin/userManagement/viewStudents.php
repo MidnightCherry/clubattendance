@@ -1,7 +1,7 @@
 <?php
     session_start();
-    if (!isset($_SESSION["student_id"])){
-        $_SESSION["userErrCode"] = "STUDENT_ID_NOT_SET";
+    if (!isset($_SESSION["admin_id"])){
+        $_SESSION["userErrCode"] = "ADMIN_ID_NOT_SET";
         $_SESSION["userErrMsg"] = "The session has expired or is invalid. Please login again. Do contact the administrator if you believe that this should not happen.";
         header("refresh:0;url=/login.php?error=true");
         die();
