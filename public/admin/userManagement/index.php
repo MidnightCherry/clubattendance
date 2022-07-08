@@ -20,7 +20,7 @@
     <body>
         <?php
             include("../../../header/header.php");
-            $currDir = $_SERVER["PHP_SELF"];
+            $currDir = "/admin/userManagement";
             $currUrl = $_SERVER['PHP_HOST'];
             $pageTitle = "User Management";
             include('../../../header/breadcrumb.php');
