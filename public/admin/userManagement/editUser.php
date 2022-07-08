@@ -122,7 +122,7 @@
                     <input class="form-control" name="telephone" id="telephone" type="telephone" value="<?php echo $thisApp[3] ?>"  placeholder="telephone" required/>
                     <label for="telephone">telephone</label>
                 </div>
-                <div class="form-floating mb-3" id="clubField" style="display: none;">
+                <div class="form-floating mb-3" id="clubField">
                     <select class="form-select" name="clubid" id="clublist" aria-label="Club" required>
                         <option value=""></option>
                         <!--Code here-->
