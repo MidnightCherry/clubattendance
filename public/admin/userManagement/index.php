@@ -23,11 +23,17 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
         <?php
             include("../../../header/header.php");
-            $currDir = "/admin/userManagement";
-            $currUrl = $_SERVER['PHP_HOST'];
-            $pageTitle = "User Management";
-            include('../../../header/breadcrumb.php');
         ?>
+        <nav class="px-5 py-4" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <?php
+                    $currDir = "/admin/userManagement";
+                    $currUrl = $_SERVER['PHP_HOST'];
+                    $pageTitle = "User Management";
+                    include('../../../header/breadcrumb.php');
+                ?>
+            </ol>
+        </nav>
         <div class="px-5">
             <div class="text-center">
                 <h1>List Users</h1>
