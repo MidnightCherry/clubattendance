@@ -6,6 +6,17 @@
         header("refresh:0;url=/login.php?error=true");
         die();
     }
+    $backPage = $_SESSION["backPage"];
+    if(!isset($_SESSION["backPage"])){
+        $backPage = "index.php";
+    }
+    if(!isset($_GET["type"])){
+        $_SESSION["userErrCode"] = "USER_TYPE_NOT_SET";
+        $_SESSION["userErrMsg"] = "The user type is not set. Do contact the administrator if you believe that this should not happen.";
+        header("refresh:0;url=$backPage?error=true");
+        die();
+    }
+    $userType = $_GET["type"];
     $_SESSION["backPage"] = "editUser.php";
 ?>
 <!DOCTYPE html>
@@ -72,8 +83,21 @@
                     echo "</div>";
                 }
 
-                //get applist
-                $getAppSQL = "SELECT app_name, app_startDate, app_endDate, app_time, app_files_link FROM applications WHERE application_id = $appId";
+                //get userinfo
+                if($userType == 0){
+                    //students
+                    $getUserSQL = "SELECT s.student_name, u.user_email, s.student_telno, c.club_id FROM users AS u JOIN students AS s ON u.user_id = s.user_id JOIN clubs AS c ON s.club_id = c.club_id";
+                } else if($userType == 1){
+                    //admins
+                    $getUserSQL = "SELECT s.student_name, u.user_email, s.student_telno, c.club_id FROM users AS u JOIN students AS s ON u.user_id = s.user_id JOIN clubs AS c ON s.club_id = c.club_id";
+                } else if($userType == 2){
+                    //officers
+                } else if($userType == 3){
+                    //attendee
+                } else {
+                    //invalid userType
+                }
+                $getAppSQL = "SELECT app_name, app_email, app_email, app_telephone, app_files_link FROM applications WHERE application_id = $appId";
                 $appRes = mysqli_query($conn, $getAppSQL);
                 if(!is_bool($appRes)){
                     $appArr = mysqli_fetch_all($appRes);
@@ -89,26 +113,29 @@
                     die();
                 }
             ?>
-            <form id="updateForm" action="./doUpdateApplication.php" method="post">
+            <form id="updateForm" action="./doUpdateUsers.php" method="post">
                 <div class="form-floating mb-3">
-                    <input class="form-control" name="appName" id="appName" type="text" value="<?php echo $thisApp[0] ?>" placeholder="Application Name" required/>
-                    <label for="applicationName">Application Name</label>
+                    <input class="form-control" name="name" id="name" type="text" value="<?php echo $thisApp[0] ?>" placeholder="Application Name" required/>
+                    <label for="name">Name</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input class="form-control" name="startDate" id="startDate" type="date" value="<?php echo $thisApp[1] ?>"  placeholder="Start Date" required/>
-                    <label for="startDate">Start Date</label>
+                    <input class="form-control" name="email" id="email" type="email" value="<?php echo $thisApp[1] ?>"  placeholder="Email Address" required/>
+                    <label for="email">Email Address</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input class="form-control" name="endDate" id="endDate" type="date" value="<?php echo $thisApp[2] ?>"  placeholder="End Date" required/>
-                    <label for="endDate">End Date</label>
+                    <input class="form-control" name="telephone" id="telephone" type="telephone" value="<?php echo $thisApp[3] ?>"  placeholder="telephone" required/>
+                    <label for="telephone">telephone</label>
+                </div>
+                <div class="form-floating mb-3" id="clubField" style="display: none;">
+                    <select class="form-select" name="clubid" id="clublist" aria-label="Club" required>
+                        <option value=""></option>
+                        <!--Code here-->
+                    </select>
+                    <label for="clubid">Club</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input class="form-control" name="time" id="time" type="time" value="<?php echo $thisApp[3] ?>"  placeholder="Time" required/>
-                    <label for="time">Time</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input class="form-control" name="proposalUrl" id="proposalUrl" type="url" value="<?php echo $thisApp[4] ?>"  placeholder="Proposal Files Link" required/>
-                    <label for="proposalFilesLink">Proposal Files Link</label>
+                    <input class="form-control" name="password" id="password" type="password" value="<?php echo $thisApp[2] ?>"  placeholder="Password"/>
+                    <label for="password">Password (Type to Change)</label>
                 </div>
                 <div class="d-grid">
                     <button class="btn btn-primary btn-lg" id="submitButton" type="submit" disabled>Submit</button>
@@ -119,9 +146,28 @@
             include("../../../header/footer.php");
         ?>
         <script type="text/javascript">
+            var xmlhttp = new XMLHttpRequest();
+            var url = "/clubs/getClubId.php";
+            var currClub = <?php echo $thisApp[3] ?>
+            xmlhttp.onreadystatechange = function(){
+                if (this.readyState == 4 && this.status == 200) {
+                    var data = JSON.parse(this.responseText);
+                    var htmlData = "<option value=\"\"></option>";
+                    for(let i = 0; i < data.clubId.length; i++){
+                        if(data.clubId[i] == currClub){
+                            htmlData = htmlData.concat("\n", "<option selected value=\""+data.clubId[i]+"\">"+data.clubName[i]+"</option>\n");
+                        } else {
+                            htmlData = htmlData.concat("\n", "<option value=\""+data.clubId[i]+"\">"+data.clubName[i]+"</option>\n");
+                        }
+                    }
+                    document.getElementById("clublist").innerHTML = htmlData;
+                }
+            }
+            xmlhttp.open("GET", url, true);
+            xmlhttp.send();
             $(document).ready(function() {
                 $('#updateForm').on('input change', function() {
-                    if(($('#appName').val() != "<?php echo $thisApp[0] ?>") || ($('#startDate').val() != "<?php echo $thisApp[1] ?>") || ($('#endDate').val() != "<?php echo $thisApp[2] ?>") || ($('#time').val() != "<?php echo $thisApp[3] ?>") || ($('#proposalUrl').val() != "<?php echo $thisApp[4] ?>")){
+                    if(($('#name').val() != "<?php echo $thisApp[0] ?>") || ($('#email').val() != "<?php echo $thisApp[1] ?>") || ($('#telephone').val() != "<?php echo $thisApp[2] ?>") || ($('#clubid').val() != "<?php echo $thisApp[3] ?>") || ($('#password').val() != "")){
                         $('#submitButton').attr('disabled', false);
                     } else {
                         $('#submitButton').attr('disabled', true);

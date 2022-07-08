@@ -50,7 +50,7 @@
                     var button = this.id;
                     dataFirstColumn = data[0]
                     if(button == "editButton"){
-                        window.location.href = "applicationDetails.php?user_id="+data[0];
+                        window.location.href = "editUser.php?type=0&user_id="+data[0];
                     }
                     if(button == "delButton"){
                         delModal.show();
@@ -67,7 +67,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Do you really want to delete this user?
+                Do you really want to delete this user? THIS ACTION IS NOT REVERSIBLE!
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
