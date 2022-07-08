@@ -30,15 +30,15 @@
                     <h4 class="pb-4">Available actions:</h4>
                     <div class="col p-2">
                         <b class="pb-2">View, Edit, and Delete Students: </b>
-                        <button type="button" class="btn btn-primary" onclick="location.href='/student/formApplication.php';">New Activity Application</button>
+                        <button type="button" class="btn btn-primary" onclick="location.href='viewStudents.php';">View Students</button>
                     </div>
                     <div class="col p-2">
                         <b class="pb-2">View, Edit, and Delete Officers: </b>
-                        <button type="button" class="btn btn-primary" onclick="location.href='/student/applicationList.php';">View Application List</button>
+                        <button type="button" class="btn btn-primary" onclick="location.href='viewOfficers.php';">View Officers</button>
                     </div>
                     <div class="col p-2">
                         <b class="pb-2">View, Edit, and Delete Admins: </b>
-                        <button type="button" class="btn btn-primary" onclick="location.href='/student/applicationList.php';">View Application List</button>
+                        <button type="button" class="btn btn-primary" onclick="location.href='viewAdmins.php';">View Admins</button>
                     </div>
                 </div>
             </div>

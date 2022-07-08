@@ -6,7 +6,6 @@
         header("refresh:0;url=/login.php?error=true");
         die();
     }
-    $studentId = $_SESSION["student_id"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
