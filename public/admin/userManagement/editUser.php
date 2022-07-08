@@ -54,9 +54,6 @@
                 ini_set('display_errors', 1);
                 require_once "../../inc/connect.php";
 
-                $appId = $_GET["app_id"];
-                $_SESSION["app_id"] = $appId;
-
                 $thisApp = array();
 
                 //check if $_GET isset
@@ -97,7 +94,6 @@
                 } else {
                     //invalid userType
                 }
-                $getAppSQL = "SELECT app_name, app_email, app_email, app_telephone, app_files_link FROM applications WHERE application_id = $appId";
                 $appRes = mysqli_query($conn, $getAppSQL);
                 if(!is_bool($appRes)){
                     $appArr = mysqli_fetch_all($appRes);
