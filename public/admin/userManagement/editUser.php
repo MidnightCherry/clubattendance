@@ -23,6 +23,7 @@
         header("refresh:0;url=$backPage?error=true");
         die();
     }
+    $_SESSION["editing_user_type"] = $_GET["type"];
     $userType = $_GET["type"];
     $_SESSION["backPage"] = "editUser.php";
 ?>
@@ -207,7 +208,7 @@
             xmlhttp.open("GET", url, true);
             xmlhttp.send();
             $(document).ready(function() {
-                $('#updateForm').on('keyup input change', function() {
+                $('#updateForm').on('input change', 'input, select, textarea', function() {
                     if(($('#name').val() != "<?php echo $thisApp[0] ?>") || ($('#email').val() != "<?php echo $thisApp[1] ?>") || ($('#telephone').val() != "<?php echo $thisApp[2] ?>") || ($('#clubid').val() != "<?php echo $thisApp[3] ?>") || ($('#clubid').val() != "<?php echo $thisApp[3] ?>") || ($('#password').val().length >= 1)){
                         $('#submitButton').attr('disabled', false);
                     } else {
