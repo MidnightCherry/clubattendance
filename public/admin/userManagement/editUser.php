@@ -130,7 +130,7 @@
                     <label for="clubid">Club</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input class="form-control" name="password" id="password" type="password" autocomplete="off"/>
+                    <input class="form-control" name="password" id="password" type="password" placeholder="Password" autocomplete="new-password"/>
                     <label for="password">Password (Type to Change)</label>
                 </div>
                 <div class="d-grid">
