@@ -42,6 +42,10 @@
                     <b class="pb-2">View Application: </b>
                     <button type="button" class="btn btn-primary" onclick="location.href='/admin/applicationList.php';">View Applications</button>
                 </div>
+                <div class="col p-2">
+                    <b class="pb-2">Manage Users: </b>
+                    <button type="button" class="btn btn-primary" onclick="location.href='/admin/userManagement/index.php';">View Applications</button>
+                </div>
             </div>
         </div>
         <?php
