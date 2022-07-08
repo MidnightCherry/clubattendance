@@ -32,7 +32,7 @@
         //what to do?
         //if password exists,
         //check if password is good
-        if(isset($_POST["password"])){
+        if(isset($_POST["password"]) && strlen($_POST["password"] > 1)){
             if(empty(trim($_POST["password"]))){
                 $password_err = "Please enter a password.";
                 die($password_err);
