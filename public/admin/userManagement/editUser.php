@@ -24,7 +24,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>UiTM Club Activities Approval System - Edit User</title>
+        <title>UiTM Club Activities Attendance System - Edit User</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
         <link rel="icon" type="image/x-icon" href="https://saringc19.uitm.edu.my/statics/icons/favicon.ico">
@@ -111,7 +111,7 @@
                     die();
                 }
             ?>
-            <form id="updateForm" action="./doUpdateUsers.php" method="post">
+            <form id="updateForm" action="./doUpdateUser.php" method="post">
                 <div class="form-floating mb-3">
                     <input class="form-control" name="name" id="name" type="text" value="<?php echo $thisApp[0] ?>" placeholder="Application Name" required/>
                     <label for="name">Name</label>

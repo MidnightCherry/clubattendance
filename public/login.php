@@ -7,7 +7,7 @@ $_SESSION["backPage"] = basename($_SERVER['PHP_SELF']);
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>UiTM Club Activities Approval System - Sign In/Sign Up</title>
+        <title>UiTM Club Activities Attendance System - Sign In/Sign Up</title>
         <!-- CSS only -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
         <link rel="icon" type="image/x-icon" href="https://saringc19.uitm.edu.my/statics/icons/favicon.ico">
@@ -17,7 +17,7 @@ $_SESSION["backPage"] = basename($_SERVER['PHP_SELF']);
             include("../header/header.php");
         ?>
         <div class="bg-warning p-3">
-            <p class="text-center fw-bolder h5">Authenticate to access UiTM Club Activities Approval System</p>
+            <p class="text-center fw-bolder h5">Authenticate to access UiTM Club Activities Attendance System</p>
         </div>
         <ul class="container px-4 nav nav-pills mt-4" id="pills-tab" role="tablist">
             <li class="nav-item px-2" role="presentation">

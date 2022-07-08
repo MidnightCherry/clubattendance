@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>UiTM Club Activities Approval System - About</title>
+        <title>UiTM Club Activities Attendance System - About</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
         <link rel="icon" type="image/x-icon" href="https://saringc19.uitm.edu.my/statics/icons/favicon.ico">
     </head>
@@ -13,7 +13,7 @@
             include("../header/header.php");
         ?>
         <div class="px-5 text-center">
-            <h1>About the UiTM Club Activities Approval System</h1>
+            <h1>About the UiTM Club Activities Attendance System</h1>
         </div>
         <nav class="px-5 py-4" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">

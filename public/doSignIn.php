@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>UiTM Club Activities Approval System - Processing request...</title>
+        <title>UiTM Club Activities Attendance System - Processing request...</title>
     </head>
     <body>
         <!--h1>Authenticating...</h1-->

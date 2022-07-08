@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>UiTM Club Activities Approval System - Welcome</title>
+        <title>UiTM Club Activities Attendance System - Welcome</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
         <link rel="icon" type="image/x-icon" href="https://saringc19.uitm.edu.my/statics/icons/favicon.ico">
     </head>
@@ -15,7 +15,7 @@
             include("../header/header.php");
         ?>
         <div class="px-5 text-center">
-            <h1>Welcome to UiTM Club Activities Approval System</h1>
+            <h1>Welcome to UiTM Club Activities Attendance System</h1>
         </div>
         <br>
         <div id="carouselExampleIndicators" class="carousel slide min-w-75 w-100" data-bs-ride="carousel" style="margin-left: auto; margin-right: auto; padding-left: 10%; padding-right: 10%;">
@@ -45,7 +45,7 @@
             </button>
         </div>
         <div class="px-5 py-4">
-            <h4 style="text-align: justify; text-justify: inter-word;">The UiTM Club Activities Approval System aims to help streamline club activities application process.</h4>
+            <h4 style="text-align: justify; text-justify: inter-word;">The UiTM Club Activities Attendance System aims to help streamline club activities application process.</h4>
         </div>
         <?php
             include("../header/footer.php");
