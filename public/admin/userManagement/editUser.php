@@ -40,7 +40,18 @@
         <nav class="px-5 py-4" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <?php
-                    $currDir = $_SERVER["PHP_SELF"];
+                    if($userType == 0){
+                        $urlStr = "/admin/userManagement/viewStudents.php/editUser.php";
+                    } else if($userType == 1){
+                        $urlStr = "/admin/userManagement/viewAdmins.php/editUser.php";
+                    } else if($userType == 2){
+                        $urlStr = "/admin/userManagement/viewOfficers.php/editUser.php";
+                    } else if($userType == 3){
+                        $urlStr = "/admin/userManagement/viewAttendees.php/editUser.php";
+                    } else {
+                        $urlStr = $_SERVER["PHP_SELF"];
+                    }
+                    $currDir = $urlStr;
                     $currUrl = $_SERVER['PHP_HOST'];
                     $pageTitle = "Edit User";
                     include('../../../header/breadcrumb.php');
