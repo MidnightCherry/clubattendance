@@ -67,7 +67,7 @@
                 }//end if
                 //echo "SUCCESS QUERY USERS TABLE FOR EMAIL!<br>";
             } else {
-                $_SESSION["userErrCode"] = "MYSQL_ERROR";
+                $_SESSION["userErrCode"] = "MYSQL_ERROR_EM";
                 $_SESSION["userErrMsg"] = "MySQL error encountered: ".mysqli_error($conn)." Please contact the administrator if you believe that this should not happen.";
                 header("refresh:0;url=$backPage&error=true");
                 die();
@@ -86,13 +86,13 @@
             if($appRes){
                 //success update
             } else {
-                $_SESSION["userErrCode"] = "MYSQL_ERROR";
+                $_SESSION["userErrCode"] = "MYSQL_ERROR_UPD_FAIL";
                 $_SESSION["userErrMsg"] = "MySQL error encountered: ".mysqli_error($conn).". Please contact the administrator if you believe that this should not happen.";
                 header("refresh:0;url=$backPage&error=true");
                 die();
             }
         } else {
-            $_SESSION["userErrCode"] = "MYSQL_ERROR";
+            $_SESSION["userErrCode"] = "MYSQL_ERROR_UPD_NOT_BOOL";
             $_SESSION["userErrMsg"] = "MySQL error encountered: ".mysqli_error($conn)." Please contact the administrator if you believe that this should not happen.";
             header("refresh:0;url=$backPage&error=true");
             die();
