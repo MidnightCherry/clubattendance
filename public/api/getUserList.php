@@ -53,8 +53,8 @@
                             array_push($columnArray, $currRowColumn[2]);
                             array_push($columnArray, $currRowColumn[3]);
                             array_push($columnArray, $currRowColumn[4]);
-                            array_push($columnArray, '<button class="d-grid mx-auto btn btn-primary" style="display: block;" id="editButton">Edit Student</button>
-                                                        <br><button class="d-grid mx-auto btn btn-danger" style="display: block;" id="delButton">Delete Student</button>');
+                            array_push($columnArray, '<button class="d-grid mx-auto btn btn-primary" style="display: block;" id="editButton">Edit Attendee</button>
+                                                        <br><button class="d-grid mx-auto btn btn-danger" style="display: block;" id="delButton">Delete Attendee</button>');
                             array_push($rowArray, $columnArray);
                         }
                     } else if($this->mode <= 2){
@@ -64,8 +64,8 @@
                             array_push($columnArray, $currRowColumn[1]);
                             array_push($columnArray, $currRowColumn[2]);
                             array_push($columnArray, $currRowColumn[3]);
-                            array_push($columnArray, '<button class="d-grid mx-auto btn btn-primary" style="display: block;" id="editButton">Edit Student</button>
-                                                        <br><button class="d-grid mx-auto btn btn-danger" style="display: block;" id="delButton">Delete Student</button>');
+                            array_push($columnArray, '<button class="d-grid mx-auto btn btn-primary" style="display: block;" id="editButton">Edit User</button>
+                                                        <br><button class="d-grid mx-auto btn btn-danger" style="display: block;" id="delButton">Delete User</button>');
                             array_push($rowArray, $columnArray);
                         }
                     } else {
