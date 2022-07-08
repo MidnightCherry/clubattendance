@@ -85,7 +85,7 @@
                 <?php
                     $currDir = $_SERVER['PHP_SELF'];
                     $currUrl = $_SERVER['PHP_HOST'];
-                    $pageTitle = "Application List";
+                    $pageTitle = "Officer List";
                     include('../../../header/breadcrumb.php');
                 ?>
             </ol>
