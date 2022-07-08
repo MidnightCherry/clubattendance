@@ -86,11 +86,13 @@
                     $getUserSQL = "SELECT s.student_name, u.user_email, s.student_telno, c.club_id FROM users AS u JOIN students AS s ON u.user_id = s.user_id JOIN clubs AS c ON s.club_id = c.club_id";
                 } else if($userType == 1){
                     //admins
-                    $getUserSQL = "SELECT s.student_name, u.user_email, s.student_telno, c.club_id FROM users AS u JOIN students AS s ON u.user_id = s.user_id JOIN clubs AS c ON s.club_id = c.club_id";
+                    $getUserSQL = "SELECT a.admin_name, u.user_email, a.admin_telno FROM users AS u JOIN admins AS a ON u.user_id = a.user_id";
                 } else if($userType == 2){
                     //officers
+                    $getUserSQL = "SELECT o.officer_name, u.user_email, o.officer_telno FROM users AS u JOIN officers AS o ON u.user_id = o.user_id";
                 } else if($userType == 3){
                     //attendee
+                    $getUserSQL = "SELECT a.attendee_name, u.user_email, a.attendee_telno, a.attendee_course FROM users AS u JOIN attendees AS a ON u.user_id = a.user_id";
                 } else {
                     //invalid userType
                 }
@@ -122,12 +124,16 @@
                     <input class="form-control" name="telephone" id="telephone" type="telephone" value="<?php echo $thisApp[3] ?>"  placeholder="telephone" required/>
                     <label for="telephone">telephone</label>
                 </div>
-                <div class="form-floating mb-3" id="clubField">
+                <div class="form-floating mb-3" id="clubField" style="display: none;">
                     <select class="form-select" name="clubid" id="clublist" aria-label="Club" required>
                         <option value=""></option>
                         <!--Code here-->
                     </select>
                     <label for="clubid">Club</label>
+                </div>
+                <div class="form-floating mb-3" id="courseId" style="display: none;">
+                    <input class="form-control" name="courseCode" id="courseCode" type="text" value="<?php echo $thisApp[4]?>" placeholder="Course Code" required/>
+                    <label for="courseCode">Course Code</label>
                 </div>
                 <div class="form-floating mb-3">
                     <input class="form-control" name="password" id="password" type="password" placeholder="Password" autocomplete="new-password"/>
@@ -145,13 +151,33 @@
             var xmlhttp = new XMLHttpRequest();
             var url = "/clubs/getClubId.php";
             var currClub = <?php echo $thisApp[3] ?>;
+            var role = <?php echo $userType ?>;
+
+            if(role == 0) {
+                    document.getElementById('courseId').style.display = "none";
+                    document.getElementById('courseCode').required = false;
+                    document.getElementById('courseCode').innerText = null;
+                    document.getElementById('clubField').style.display = "block";
+                    document.getElementById('clublist').required = true;
+                } else if(role == 3) {
+                    document.getElementById('clubField').style.display = "none";
+                    document.getElementById('clublist').required = false;
+                    document.getElementById('courseId').style.display = "block";
+                    document.getElementById('courseCode').required = true;
+                } else {
+                    document.getElementById('clubField').style.display = "none";
+                    document.getElementById('clublist').required = false;
+                    document.getElementById('courseId').style.display = "none";
+                    document.getElementById('courseCode').required = false;
+                    document.getElementById('courseCode').innerText = null;
+                }
 
             xmlhttp.onreadystatechange = function(){
                 if (this.readyState == 4 && this.status == 200) {
                     var data = JSON.parse(this.responseText);
                     var htmlData = "<option value=\"\"></option>";
                     for(let i = 0; i < data.clubId.length; i++){
-                        if(data.clubId[i] == currClub){
+                        if(data.clubId[i] == currClub && role == 0){
                             htmlData = htmlData.concat("\n", "<option selected value=\""+data.clubId[i]+"\">"+data.clubName[i]+"</option>\n");
                         } else {
                             htmlData = htmlData.concat("\n", "<option value=\""+data.clubId[i]+"\">"+data.clubName[i]+"</option>\n");
@@ -163,8 +189,8 @@
             xmlhttp.open("GET", url, true);
             xmlhttp.send();
             $(document).ready(function() {
-                $('#updateForm').on('input change', function() {
-                    if(($('#name').val() != "<?php echo $thisApp[0] ?>") || ($('#email').val() != "<?php echo $thisApp[1] ?>") || ($('#telephone').val() != "<?php echo $thisApp[2] ?>") || ($('#clubid').val() != "<?php echo $thisApp[3] ?>") || ($('#password').val().length <= 1)){
+                $('#updateForm').on('keyup input change', function() {
+                    if(($('#name').val() != "<?php echo $thisApp[0] ?>") || ($('#email').val() != "<?php echo $thisApp[1] ?>") || ($('#telephone').val() != "<?php echo $thisApp[2] ?>") || ($('#clubid').val() != "<?php echo $thisApp[3] ?>") || ($('#clubid').val() != "<?php echo $thisApp[3] ?>") || ($('#password').val().length >= 1)){
                         $('#submitButton').attr('disabled', false);
                     } else {
                         $('#submitButton').attr('disabled', true);
