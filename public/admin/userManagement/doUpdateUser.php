@@ -32,7 +32,7 @@
         //what to do?
         //if password exists,
         //check if password is good
-        if(isset($_POST["password"]) && strlen($_POST["password"] > 1)){
+        if(isset($_POST["password"]) && strlen($_POST["password"]) > 1){
             if(empty(trim($_POST["password"]))){
                 $password_err = "Please enter a password.";
                 die($password_err);
@@ -76,7 +76,7 @@
             mysqli_stmt_close($stmt);
         }
         //update users table
-        if(!isset($_POST["password"])){
+        if(!isset($_POST["password"]) && strlen($_POST["password"]) < 1){
             $usersSql = "UPDATE users SET user_email = $userEmail WHERE user_id = $userId";
         } else {
             $usersSql = "UPDATE users SET user_email = $userEmail, user_pass = $password WHERE user_id = $userId";
