@@ -48,11 +48,11 @@
         }
         //check if email would cause duplication
         $userId = $_SESSION["editing_user_id"];
-        $emailsql = "SELECT count(user_email) FROM users WHERE NOT user_id = $userId" ;
+        $emailsql = "SELECT count(user_email) FROM users WHERE NOT user_id = (?)" ;
         if ($stmt=mysqli_prepare($conn, $emailsql)){
-            mysqli_stmt_bind_param($stmt, "s", $user_email);
+            mysqli_stmt_bind_param($stmt, "s", $user_id);
 
-            $user_email = $email;
+            $user_id = $userId;
 
             if(mysqli_stmt_execute($stmt)){
                 $emailArray = mysqli_fetch_array(mysqli_stmt_get_result($stmt));
