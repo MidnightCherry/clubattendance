@@ -50,7 +50,7 @@
                     var button = this.id;
                     dataFirstColumn = data[0]
                     if(button == "editButton"){
-                        window.location.href = "editUser.php?type=0&user_id="+data[0];
+                        window.location.href = "editUser.php?type=3&user_id="+data[0];
                     }
                     if(button == "delButton"){
                         delModal.show();
