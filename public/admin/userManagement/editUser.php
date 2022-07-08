@@ -132,7 +132,7 @@
                     <label for="clubid">Club</label>
                 </div>
                 <div class="form-floating mb-3" id="courseId" style="display: none;">
-                    <input class="form-control" name="courseCode" id="courseCode" type="text" value="<?php echo $thisApp[4]?>" placeholder="Course Code" required/>
+                    <input class="form-control" name="courseCode" id="courseCode" type="text" value="<?php echo $thisApp[3]?>" placeholder="Course Code" required/>
                     <label for="courseCode">Course Code</label>
                 </div>
                 <div class="form-floating mb-3">
