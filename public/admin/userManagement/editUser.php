@@ -103,18 +103,22 @@
                 //get userinfo
                 if($userType == 0){
                     //students
-                    $getUserSQL = "SELECT s.student_name, u.user_email, s.student_telno, c.club_id FROM users AS u JOIN students AS s ON u.user_id = s.user_id JOIN clubs AS c ON s.club_id = c.club_id";
+                    $getUserSQL = "SELECT s.student_name, u.user_email, s.student_telno, c.club_id FROM users AS u JOIN students AS s ON u.user_id = s.user_id JOIN clubs AS c ON s.club_id = c.club_id WHERE u.user_id = $userId";
                 } else if($userType == 1){
                     //admins
-                    $getUserSQL = "SELECT a.admin_name, u.user_email, a.admin_telno FROM users AS u JOIN admins AS a ON u.user_id = a.user_id";
+                    $getUserSQL = "SELECT a.admin_name, u.user_email, a.admin_telno FROM users AS u JOIN admins AS a ON u.user_id = a.user_id WHERE u.user_id = $userId";
                 } else if($userType == 2){
                     //officers
-                    $getUserSQL = "SELECT o.officer_name, u.user_email, o.officer_telno FROM users AS u JOIN officers AS o ON u.user_id = o.user_id";
+                    $getUserSQL = "SELECT o.officer_name, u.user_email, o.officer_telno FROM users AS u JOIN officers AS o ON u.user_id = o.user_id WHERE u.user_id = $userId";
                 } else if($userType == 3){
                     //attendee
-                    $getUserSQL = "SELECT a.attendee_name, u.user_email, a.attendee_telno, a.attendee_course FROM users AS u JOIN attendees AS a ON u.user_id = a.user_id";
+                    $getUserSQL = "SELECT a.attendee_name, u.user_email, a.attendee_telno, a.attendee_course FROM users AS u JOIN attendees AS a ON u.user_id = a.user_id WHERE u.user_id = $userId";
                 } else {
                     //invalid userType
+                    $_SESSION["userErrCode"] = "USER_TYPE_NOT_SET";
+                    $_SESSION["userErrMsg"] = "The user type is not set. Do contact the administrator if you believe that this should not happen.";
+                    header("refresh:0;url=index.php?error=true");
+                    die();
                 }
                 $appRes = mysqli_query($conn, $getUserSQL);
                 if(!is_bool($appRes)){
