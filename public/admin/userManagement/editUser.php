@@ -52,7 +52,7 @@
             <?php
                 error_reporting(E_ALL);
                 ini_set('display_errors', 1);
-                require_once "../inc/connect.php";
+                require_once "../../inc/connect.php";
 
                 $appId = $_GET["app_id"];
                 $_SESSION["app_id"] = $appId;
