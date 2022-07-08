@@ -47,11 +47,13 @@
             $password = password_hash($password, PASSWORD_DEFAULT);
         }
         //check if email would cause duplication
+        $userEmail = $_POST["email"];
         $userId = $_SESSION["editing_user_id"];
-        $emailsql = "SELECT count(user_email) FROM users WHERE NOT user_id = (?)" ;
+        $emailsql = "SELECT count(user_email) FROM users WHERE user_email = (?) AND NOT user_id = (?)" ;
         if ($stmt=mysqli_prepare($conn, $emailsql)){
-            mysqli_stmt_bind_param($stmt, "i", $user_id);
+            mysqli_stmt_bind_param($stmt, "si", $user_email, $user_id);
 
+            $user_email = $userEmail;
             $user_id = $userId;
 
             if(mysqli_stmt_execute($stmt)){
@@ -74,7 +76,6 @@
             mysqli_stmt_close($stmt);
         }
         //update users table
-        $userEmail = $_POST["email"];
         if(!isset($_POST["password"])){
             $usersSql = "UPDATE users SET user_email = $userEmail WHERE user_id = $userId";
         } else {
