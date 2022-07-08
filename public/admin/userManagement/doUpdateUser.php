@@ -77,9 +77,9 @@
         }
         //update users table
         if(isset($_POST["password"]) && strlen($_POST["password"]) > 1){
-            $usersSql = "UPDATE users SET user_email = $email, user_pass = $password WHERE user_id = $userId";
+            $usersSql = "UPDATE users SET user_email = \"$email\", user_pass = \"$password\" WHERE user_id = $userId";
         } else {
-            $usersSql = "UPDATE users SET user_email = $email WHERE user_id = $userId";
+            $usersSql = "UPDATE users SET user_email = \"$email\" WHERE user_id = $userId";
         }
         $appRes = mysqli_query($conn, $usersSql);
         if(is_bool($appRes)){
@@ -104,16 +104,16 @@
         $course = $_POST["courseCode"];
         switch ($userType){
             case "0":
-                $roleSql = "UPDATE students SET student_name = $name, student_telno = $telno, club_id = $clubId WHERE user_id = $userId";
+                $roleSql = "UPDATE students SET student_name = \"$name\", student_telno = \"$telno\", club_id = $clubId WHERE user_id = $userId";
                 break;
             case "1":
-                $roleSql = "UPDATE admins SET admin_name = $name, admin_telno = $telno WHERE user_id = $userId";
+                $roleSql = "UPDATE admins SET admin_name = \"$name\", admin_telno = \"$telno\" WHERE user_id = $userId";
                 break;
             case "2":
-                $roleSql = "UPDATE officers SET officer_name = $name, officer_telno = $telno WHERE user_id = $userId";
+                $roleSql = "UPDATE officers SET officer_name = \"$name\", officer_telno = $telno\" WHERE user_id = $userId";
                 break;
             case "3":
-                $roleSql = "UPDATE attendees SET attendee_name = $name, attendee_telno = $telno, attendee_course = $course WHERE user_id = $userId";
+                $roleSql = "UPDATE attendees SET attendee_name = \"$name\", attendee_telno = \"$telno\", attendee_course = \"$course\" WHERE user_id = $userId";
                 break;
             default:
                 break;
