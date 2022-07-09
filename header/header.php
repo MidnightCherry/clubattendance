@@ -58,19 +58,7 @@
         </div>
     </header>
 </div>
-
-<?php
-    $_SESSION["backPage"] = basename($_SERVER["PHP_SELF"]);
-    //check if $_GET isset
-    if(isset($_GET["error"])){
-        //error exists
-        echo "<script type=\"text/javascript\"> $('#signInModal').show(); </script>";
-    }
-    if(isset($_GET["signup"])){
-        echo "<script type=\"text/javascript\"> $('#signInModal').show(); </script>";
-    }
-?>
-
+<?php $_SESSION["backPage"] = basename($_SERVER["PHP_SELF"]); ?>
 <!-- Modal -->
 <div class="modal fade" id="signInModal" tabindex="-1" aria-labelledby="signInModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -210,3 +198,14 @@
     </div>
   </div>
 </div>
+
+<?php
+    //check if $_GET isset
+    if(isset($_GET["error"])){
+        //error exists
+        echo "<script type=\"text/javascript\"> $('#signInModal').show(); </script>";
+    }
+    if(isset($_GET["signup"])){
+        echo "<script type=\"text/javascript\"> $('#signInModal').show(); </script>";
+    }
+?>
