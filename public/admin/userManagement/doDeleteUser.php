@@ -40,6 +40,6 @@
         }
         $_SESSION["userErrCode"] = "DELETE_USER_SUCCESS";
         $_SESSION["userErrMsg"] = "User deleted successfully. Changes will be reflected on the system.";
-        header("refresh:0;url=$backPage&signup=success");
+        header("refresh:0;url=$backPage?signup=success");
     }
 ?>
