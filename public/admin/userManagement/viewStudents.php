@@ -57,7 +57,7 @@
                         delModal.show();
                     }
                 })
-                $("#confirmDeleteModal").on('click', 'button', function(){
+                $("#confirmDeleteModal").on('click', function(){
                     window.location.href = "editUser.php?type=0&user_id="+dataFirstColumn;
                 })
             } );
