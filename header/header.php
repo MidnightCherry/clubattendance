@@ -59,7 +59,17 @@
     </header>
 </div>
 
-<?php $_SESSION["backPage"] = basename($_SERVER["PHP_SELF"])?>
+<?php
+    $_SESSION["backPage"] = basename($_SERVER["PHP_SELF"]);
+    //check if $_GET isset
+    if(isset($_GET["error"])){
+        //error exists
+        echo "<script type=\"text/javascript\"> $('#signInModal').show(); </script>";
+    }
+    if(isset($_GET["signup"])){
+        echo "<script type=\"text/javascript\"> $('#signInModal').show(); </script>";
+    }
+?>
 
 <!-- Modal -->
 <div class="modal fade" id="signInModal" tabindex="-1" aria-labelledby="signInModalLabel" aria-hidden="true">
@@ -185,16 +195,6 @@
         </style>
         <!-- JavaScript Bundle with Popper -->
         <script type="application/javascript">
-            <?php 
-                //check if $_GET isset
-                if(isset($_GET["error"])){
-                    //error exists
-                    echo "$('#signInModal).show();'";
-                }
-                if(isset($_GET["signup"])){
-                    echo "$('#signInModal).show();'";
-                }
-            ?>
             document.querySelector(".number").addEventListener("keypress", function (evt) {
                 if (evt.which != 8 && evt.which != 0 && evt.which < 48 || evt.which > 57)
                 {
