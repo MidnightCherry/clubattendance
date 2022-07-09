@@ -64,16 +64,19 @@
         <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Delete User</h5>
+                <h5 class="modal-title" id="staticBackdropLabel">Confirm Delete User</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+                <div class="alert alert-danger">
+                    <b>WARNING: THIS ACTION IS IRREVERSIBLE!</b>
+                </div>
                 <p>Do you really want to delete this user?</p>
-                <b>THIS ACTION IS IRREVERSIBLE!</b>
+                <b class="text-danger">Deleting this user will also delete the associated applications made by the user.</b>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-danger" onclick="window.location.href = 'doDeleteUser.php?role=0user_id='+dataFirstColumn;">Proceed</button>
+                <button type="button" class="btn btn-danger" onclick="window.location.href = 'doDeleteUser.php?role=0user_id='+dataFirstColumn">Proceed</button>
             </div>
             </div>
         </div>
