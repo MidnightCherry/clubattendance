@@ -18,13 +18,6 @@
         die();
     }
     $userId = $_GET["user_id"];
-    if (!isset($_GET["role"])){
-        $_SESSION["userErrCode"] = "ROLE_NOT_SET";
-        $_SESSION["userErrMsg"] = "The required parameter, ROLE, is not set. Do contact the administrator if you believe that this should not happen.";
-        header("refresh:0;url=$backPage?error=true");
-        die();
-    }
-    $role = $_GET["role"];
     if($_SERVER("REQUEST_METHOD") == "GET"){
         //what to do?
         //delete from users table

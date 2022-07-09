@@ -58,7 +58,7 @@
                     }
                 })
                 $("#confirmDeleteModal").on('click', function(){
-                    window.location.href = "doDeleteUser.php?role=0&user_id="+dataFirstColumn;
+                    window.location.href = "doDeleteUser.php?user_id="+dataFirstColumn;
                 })
             } );
         </script>
