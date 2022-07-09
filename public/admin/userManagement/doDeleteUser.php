@@ -1,5 +1,6 @@
 <?php
     session_start();
+    require_once "../../inc/connect.php";
     if (!isset($_SESSION["admin_id"])){
         $_SESSION["userErrCode"] = "ADMIN_ID_NOT_SET";
         $_SESSION["userErrMsg"] = "The session has expired or is invalid. Please login again. Do contact the administrator if you believe that this should not happen.";
