@@ -44,7 +44,7 @@
         </nav>
         <div class="container px-5">
             <div class="py-3 row">
-                <h1 class="pb-4">Edit Application</h1>
+                <h1 class="pb-4 col">Edit Application</h1>
                 <div class="col">
                     <button class="btn btn-danger btn-lg float-end" id="deleteButton" onclick="location.href='/student/doDeleteApplication.php?app_id=<?php echo $appId ?>';">Delete Application</button>
                 </div>
