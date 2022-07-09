@@ -43,7 +43,12 @@
             </ol>
         </nav>
         <div class="container px-5">
-            <h1 class="pb-4">Edit Application</h1>
+            <div class="py-3 row">
+                <h1 class="pb-4">Edit Application</h1>
+                <div class="col">
+                    <button class="btn btn-danger btn-lg float-end" id="deleteButton" onclick="location.href='/student/doDeleteApplication.php?app_id=<?php echo $appId ?>';">Delete Application</button>
+                </div>
+            </div>
             <?php
                 error_reporting(E_ALL);
                 ini_set('display_errors', 1);
@@ -120,9 +125,6 @@
                     <button class="btn btn-primary btn-lg" id="submitButton" type="submit" disabled>Submit</button>
                 </div>
             </form>
-            <div class="py-3">
-                    <button class="btn btn-danger btn-lg" id="deleteButton" onclick="location.href='/student/doDeleteApplication.php?app_id=<?php echo $appId ?>';">Delete Application</button>
-            </div>
         </div>
         <?php
             include("../../header/footer.php");
