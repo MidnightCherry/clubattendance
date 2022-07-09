@@ -18,11 +18,11 @@
         die();
     }
     $appId = $_GET["app_id"];
-    if($_SERVER("REQUEST_METHOD") == "GET"){
+    if($_SERVER["REQUEST_METHOD"] == "GET"){
         //what to do?
-        //delete from users table
-        $delUserSql = "DELETE FROM applications WHERE application_id = $appId";
-        $delRes = mysqli_query($conn, $delUserSql);
+        //delete from applications table
+        $delAppSql = "DELETE FROM applications WHERE application_id = $appId";
+        $delRes = mysqli_query($conn, $delAppSql);
         if(is_bool($delRes)){
             if($delRes){
                 //success update
@@ -40,6 +40,6 @@
         }
         $_SESSION["userErrCode"] = "DELETE_APPLICATION_SUCCESS";
         $_SESSION["userErrMsg"] = "Application deleted successfully. Changes will be reflected on the system.";
-        header("refresh:0;url=$backPage&signup=success");
+        header("refresh:0;url=$backPage?signup=success");
     }
 ?>
