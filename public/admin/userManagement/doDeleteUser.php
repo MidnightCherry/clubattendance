@@ -20,7 +20,7 @@
         die();
     }
     $userId = $_GET["user_id"];
-    if($_SERVER("REQUEST_METHOD") == "GET"){
+    if($_SERVER["REQUEST_METHOD"] == "GET"){
         //what to do?
         //delete from users table
         $delUserSql = "DELETE FROM users WHERE user_id = $userId";
