@@ -1,5 +1,7 @@
 <?php
     session_start();
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
     require_once "../../inc/connect.php";
     if (!isset($_SESSION["admin_id"])){
         $_SESSION["userErrCode"] = "ADMIN_ID_NOT_SET";
