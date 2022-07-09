@@ -120,6 +120,9 @@
                     <button class="btn btn-primary btn-lg" id="submitButton" type="submit" disabled>Submit</button>
                 </div>
             </form>
+            <div class="d-grid">
+                    <button class="btn btn-danger btn-lg" id="deleteButton" onclick="location.href='/student/doDeleteApplication.php?app_id=<?php echo $appId ?>';">Delete Application</button>
+            </div>
         </div>
         <?php
             include("../../header/footer.php");
