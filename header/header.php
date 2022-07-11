@@ -145,7 +145,7 @@
                 <div class="container px-5">
                     <h3>Sign In</h3>
                     <p>Please enter the email and password to continue.</p>
-                    <form id="loginForm" action="doSignIn.php" method="post">
+                    <form id="loginForm" action="/doSignIn.php" method="post">
                         <div class="form-floating mb-3">
                             <input class="form-control" name="signInEmail" type="email" placeholder="Email Address" required/>
                             <label for="emailAddress">Email Address</label>
