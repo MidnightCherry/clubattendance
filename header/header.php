@@ -99,9 +99,82 @@
                     echo "<label class=\"px-2\">Welcome, <a class=\"text-decoration-none\" href=/".$url."/>".$shortName."</a>!</label>";
                     echo '<button type="button" class="btn btn-danger" onclick="location.href=\'/doSignOut.php\';">Logout</button>';
                 } else {
-                    echo '<button type="button" class="btn btn-primary" onclick="location.href=\'/login.php\'">Login</button>';
+                    echo '<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">Log In</button>';
+                    echo '<button type="button" class="btn btn-primary" onclick="location.href=\'/login.php\'">Sign Up</button>';
                 }
             ?>
         </div>
     </header>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModalLabel">Sign In</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <?php 
+                    //check if $_GET isset
+                    if(isset($_GET["error"])){
+                        //error exists
+                        echo "<div class=\"alert alert-danger my-4\" style=\"margin-left: 13%; margin-right: 13%;\">";
+                        if(isset($_SESSION["userErrMsg"])){
+                            //get err msg
+                            $errMsg = $_SESSION["userErrMsg"];
+                            $errCode = $_SESSION["userErrCode"];
+                            echo "<h5 style=\"text-align: justify; text-justify: inter-word;\">$errMsg</h5>";
+                            echo "<br><p>Error code: $errCode</p>";
+                        }
+                        echo "</div>";
+                    }
+                    if(isset($_GET["signup"])){
+                        echo "<div class=\"alert alert-success my-4\" style=\"margin-left: 13%; margin-right: 13%;\">";
+                        if(isset($_SESSION["userErrMsg"])){
+                            //get err msg
+                            $errMsg = $_SESSION["userErrMsg"];
+                            $errCode = $_SESSION["userErrCode"];
+                            echo "<h5 style=\"text-align: justify; text-justify: inter-word;\">$errMsg</h5>";
+                        }
+                        echo "</div>";
+                    }
+                ?>
+                <div class="container px-5 my-4">
+                    <h3>Sign In</h3>
+                    <p>Please enter the email and password to continue.</p>
+                    <form id="loginForm" action="doSignIn.php" method="post">
+                        <div class="form-floating mb-3">
+                            <input class="form-control" name="signInEmail" type="email" placeholder="Email Address" required/>
+                            <label for="emailAddress">Email Address</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input class="form-control" name="signInPassword" type="password" placeholder="Password" required/>
+                            <label for="password">Password</label>
+                        </div>
+                        <div class="d-grid modal-footer">
+                            <button class="btn btn-primary btn-lg" id="signInButton" type="submit">Sign In</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!--div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Understood</button>
+            </div-->
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    //onload window jquery
+    $(window).on('load', function(){
+        <?php
+            if(isset($_GET["error"])){
+                //error exists
+                echo "$('#loginModal').modal('show');";
+            }
+        ?>
+    })
+</script>
