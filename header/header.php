@@ -31,6 +31,9 @@
         background-color: #7700dd;
         color: white;
     }
+    label, .form-control {
+        color: #000000; 
+    }
     .footer {
         position: absolute;
         right: 0;
