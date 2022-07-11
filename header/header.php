@@ -37,7 +37,7 @@
     label, .form-control {
         color: #000000; 
     }
-    .nav-link{
+    .nav-link[aria-selected="true"]{
         background-color: #ffffff;
         color: #7700dd;
     }
