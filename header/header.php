@@ -159,7 +159,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color: white; color: #7700ff;">Close</button>
-                <button class="btn btn-primary btn-lg" form="loginForm" id="signInButton" type="submit">Sign In</button>
+                <button class="btn btn-primary" form="loginForm" id="signInButton" type="submit">Sign In</button>
             </div>
         </div>
     </div>
@@ -174,5 +174,8 @@
                 echo "$('#loginModal').modal('show');";
             }
         ?>
+    })
+    $('#loginModal').on('hidden.bs.modal', function(){
+        window.history.replaceState({}, document.title, '/<?php echo $backPage?>');
     })
 </script>
