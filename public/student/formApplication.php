@@ -67,13 +67,15 @@
             }
         ?>
         <script type="text/javascript">
-            var today = "<?php echo date("Y-m-d") ?>"
-            document.getElementById("startDate").min = today;
+            function setValidTimeOnLoad(){
+                var today = "<?php echo date("Y-m-d") ?>"
+                document.getElementById("startDate").min = today;
+            }
             function doUpdateMinDate(obj){
                 document.getElementById("endDate").min = obj.value
             }
         </script>
-        <div class="container px-5">
+        <div class="container px-5" onload="setValidTimeOnLoad()">
             <h1 class="pb-4">New Activity Application</h1>
             <p>Please fill in the form below.</p>
             <form id="contactForm" action="./doStudentApplication.php" method="post">
