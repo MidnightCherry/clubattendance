@@ -20,7 +20,7 @@ $_SESSION["backPage"] = basename($_SERVER['PHP_SELF']);
         <?php
             include("../header/header.php");
         ?>
-        <div class="bg-warning p-3">
+        <div class="bg-warning p-3 text-dark">
             <p class="text-center fw-bolder h5">Authenticate to access UiTM Club Activities Attendance System</p>
         </div>
         <ul class="container px-4 nav nav-pills mt-4" id="pills-tab" role="tablist">
