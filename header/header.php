@@ -66,7 +66,7 @@
         text-align: center;
     }
 </style>
-<div class="px-5 shadow bg-white <?php if($_SERVER["PHP_SELF"] == "/index.php"){echo "mb-5";} ?>">
+<div class="px-5 shadow bg-white <?php if($_SERVER["PHP_SELF"] != "/index.php"){echo "mb-5";} ?>">
     <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3">
         <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
             <!--svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg-->
