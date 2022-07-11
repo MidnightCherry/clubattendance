@@ -4,10 +4,25 @@
         height: 100%;
     }
     body {
+        background-color: #7700dd;
+        color: white;
         position: relative;
         margin: 0;
         padding-bottom: 6rem;
         min-height: 100%;
+    }
+    .btn-primary-login{
+        background-color: #7700ff;
+    }
+    .btn-primary-login:hover{
+        background-color: #7700dd;
+    }
+    .btn-primary-login:active{
+        background-color: #7700cc;
+    }
+    .bg-uitm{
+        background-color: #7700dd;
+        color: white;
     }
     .footer {
         position: absolute;
@@ -19,8 +34,8 @@
         text-align: center;
     }
 </style>
-<div class="px-5">
-    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+<div class="px-5 shadow bg-white">
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4">
         <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
             <!--svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg-->
             <img src="https://saringc19.uitm.edu.my/statics/LogoUiTM.png" class="" height="50px" alt="UiTM Logo">
@@ -52,7 +67,7 @@
                     echo "<label class=\"px-2\">Welcome, <a class=\"text-decoration-none\" href=/".$url."/>".$shortName."</a>!</label>";
                     echo '<button type="button" class="btn btn-danger" onclick="location.href=\'/doSignOut.php\';">Logout</button>';
                 } else {
-                    echo '<button type="button" class="btn btn-primary" onclick="location.href=\'/login.php\'">Login</button>';
+                    echo '<button type="button" class="btn btn-primary-login" onclick="location.href=\'/login.php\'">Login</button>';
                 }
             ?>
         </div>
