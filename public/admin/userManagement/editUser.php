@@ -26,7 +26,6 @@
     $_SESSION["editing_user_type"] = $_GET["type"];
     $userType = $_GET["type"];
     $userId = $_GET["user_id"];
-    $_SESSION["backPage"] = "editUser.php?type=".$userType."&user_id=".$userId;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,12 +46,16 @@
             include("../../../header/header.php");
             if($userType == 0){
                 $urlStr = "/admin/userManagement/viewStudents.php/editUser.php";
+                $_SESSION["backPage"] = "viewStudents.php";
             } else if($userType == 1){
                 $urlStr = "/admin/userManagement/viewAdmins.php/editUser.php";
+                $_SESSION["backPage"] = "viewAdmins.php";
             } else if($userType == 2){
                 $urlStr = "/admin/userManagement/viewOfficers.php/editUser.php";
+                $_SESSION["backPage"] = "viewOfficers.php";
             } else if($userType == 3){
                 $urlStr = "/admin/userManagement/viewAttendees.php/editUser.php";
+                $_SESSION["backPage"] = "viewAttendees.php";
             } else {
                 $urlStr = $_SERVER["PHP_SELF"];
             }

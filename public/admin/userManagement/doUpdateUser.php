@@ -17,13 +17,13 @@
     if (!isset($_SESSION["editing_user_id"])){
         $_SESSION["userErrCode"] = "USER_ID_NOT_SET";
         $_SESSION["userErrMsg"] = "The required parameter related to USER_ID is not set. Do contact the administrator if you believe that this should not happen.";
-        header("refresh:0;url=$backPage&error=true");
+        header("refresh:0;url=$backPage?error=true");
         die();
     }
     if (!isset($_SESSION["editing_user_type"])){
         $_SESSION["userErrCode"] = "USER_TYPE_NOT_SET";
         $_SESSION["userErrMsg"] = "The required parameter related to USER_TYPE is not set. Do contact the administrator if you believe that this should not happen.";
-        header("refresh:0;url=$backPage&error=true");
+        header("refresh:0;url=$backPage?error=true");
         die();
     }
     $userType = $_SESSION["editing_user_type"];
@@ -39,7 +39,7 @@
             } elseif(strlen(trim($_POST["password"])) < 8){
                 $_SESSION["userErrCode"] = "INVALID_PASSWORD";
                 $_SESSION["userErrMsg"] = "Password is invalid. Password must have at least 8 characters.";
-                header("refresh:0;url=$backPage&error=true");
+                header("refresh:0;url=$backPage?error=true");
                 die();
             } else{
                 $password = trim($_POST["password"]);
@@ -62,14 +62,14 @@
                 if($userEmail > 0 || $userEmail != NULL){
                     $_SESSION["userErrCode"] = "EMAIL_EXISTS";
                     $_SESSION["userErrMsg"] = "The account for this email already exists.";
-                    header("refresh:0;url=$backPage&error=true");
+                    header("refresh:0;url=$backPage?error=true");
                     die();
                 }//end if
                 //echo "SUCCESS QUERY USERS TABLE FOR EMAIL!<br>";
             } else {
                 $_SESSION["userErrCode"] = "MYSQL_ERROR_EM";
                 $_SESSION["userErrMsg"] = "MySQL error encountered: ".mysqli_error($conn)." Please contact the administrator if you believe that this should not happen.";
-                header("refresh:0;url=$backPage&error=true");
+                header("refresh:0;url=$backPage?error=true");
                 die();
             }
 
@@ -88,13 +88,13 @@
             } else {
                 $_SESSION["userErrCode"] = "MYSQL_ERROR_UPD_FAIL";
                 $_SESSION["userErrMsg"] = "MySQL error encountered: ".mysqli_error($conn).". Please contact the administrator if you believe that this should not happen.";
-                header("refresh:0;url=$backPage&error=true");
+                header("refresh:0;url=$backPage?error=true");
                 die();
             }
         } else {
             $_SESSION["userErrCode"] = "MYSQL_ERROR_UPD_NOT_BOOL";
             $_SESSION["userErrMsg"] = "MySQL error encountered: ".mysqli_error($conn)." Please contact the administrator if you believe that this should not happen.";
-            header("refresh:0;url=$backPage&error=true");
+            header("refresh:0;url=$backPage?error=true");
             die();
         }
         //update respective roles table
@@ -125,17 +125,17 @@
             } else {
                 $_SESSION["userErrCode"] = "MYSQL_ERROR";
                 $_SESSION["userErrMsg"] = "MySQL error encountered: ".mysqli_error($conn).". Please contact the administrator if you believe that this should not happen.";
-                header("refresh:0;url=$backPage&error=true");
+                header("refresh:0;url=$backPage?error=true");
                 die();
             }
         } else {
             $_SESSION["userErrCode"] = "MYSQL_ERROR";
             $_SESSION["userErrMsg"] = "MySQL error encountered: ".mysqli_error($conn)." Please contact the administrator if you believe that this should not happen.";
-            header("refresh:0;url=$backPage&error=true");
+            header("refresh:0;url=$backPage?error=true");
             die();
         }
         $_SESSION["userErrCode"] = "UPDATE_USER_SUCCESS";
         $_SESSION["userErrMsg"] = "User updated successfully. Changes will be reflected on the system.";
-        header("refresh:0;url=$backPage&signup=success");
+        header("refresh:0;url=$backPage?signup=success");
     }
 ?>
