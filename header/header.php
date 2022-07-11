@@ -99,7 +99,7 @@
                     echo "<label class=\"px-2\">Welcome, <a class=\"text-decoration-none\" href=/".$url."/>".$shortName."</a>!</label>";
                     echo '<button type="button" class="btn btn-danger" onclick="location.href=\'/doSignOut.php\';">Logout</button>';
                 } else {
-                    echo '<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">Log In</button>';
+                    echo '<button type="button" class="btn btn-primary px-2" data-bs-toggle="modal" data-bs-target="#loginModal">Log In</button>';
                     echo '<button type="button" class="btn btn-primary" onclick="location.href=\'/login.php\'">Sign Up</button>';
                 }
             ?>
@@ -117,6 +117,7 @@
             </div>
             <div class="modal-body">
                 <?php 
+                    $_SESSION["backPage"] = $_SERVER["PHP_SELF"];
                     //check if $_GET isset
                     if(isset($_GET["error"])){
                         //error exists
@@ -141,7 +142,7 @@
                         echo "</div>";
                     }
                 ?>
-                <div class="container px-5 my-4">
+                <div class="container px-5">
                     <h3>Sign In</h3>
                     <p>Please enter the email and password to continue.</p>
                     <form id="loginForm" action="doSignIn.php" method="post">
@@ -153,16 +154,13 @@
                             <input class="form-control" name="signInPassword" type="password" placeholder="Password" required/>
                             <label for="password">Password</label>
                         </div>
-                        <div class="d-grid modal-footer">
-                            <button class="btn btn-primary btn-lg" id="signInButton" type="submit">Sign In</button>
-                        </div>
                     </form>
                 </div>
             </div>
-            <!--div class="modal-footer">
+            <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Understood</button>
-            </div-->
+                <button class="btn btn-primary btn-lg" form="loginForm" id="signInButton" type="submit">Sign In</button>
+            </div>
         </div>
     </div>
 </div>
