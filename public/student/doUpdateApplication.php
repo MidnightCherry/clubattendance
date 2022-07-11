@@ -38,12 +38,40 @@
         //assign stuff to vars
         $appId = $_SESSION["app_id"];
         $appName = $_POST["appName"];
+        //check if date is valid
         $startDate = $_POST["startDate"];
         $endDate = $_POST["endDate"];
+        $datesArr = array($startDate, $endDate);
+        foreach($datesArr as $currDate){
+            if (preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$currDate)) {
+                //date format is correct (YYYY-MM-DD)
+                $dateElementArray = explode("-", $currDate);
+                if(!checkdate($dateElementArray[1], $dateElementArray[2], $dateElementArray[0])){
+                    $_SESSION["userErrCode"] = "INVALID_DATE";
+                    $_SESSION["userErrMsg"] = "Date is invalid. Please enter a valid date.";
+                    header("refresh:0;url=$backPage?error=true");
+                    die();
+                }
+            } else {
+                $_SESSION["userErrCode"] = "INVALID_DATE_FORMAT";
+                $_SESSION["userErrMsg"] = "Date should be in YYYY-MM-DD format. Please re-enter the date in the correct format.";
+                header("refresh:0;url=$backPage?error=true");
+                die();
+            }
+        }
+        
+        //validate time
+        $time = $_POST["time"];
+        if(!preg_match("/^(?:2[0-3]|[01][0-9]):[0-5][0-9]$/", $time)){
+            $_SESSION["userErrCode"] = "INVALID_TIME";
+            $_SESSION["userErrMsg"] = "Time entered is invalid. Please enter a valid time.";
+            header("refresh:0;url=$backPage?error=true");
+            die();
+        }
         $propUrl = $_POST["proposalUrl"];
         $adminId = $_SESSION["admin_id"];
 
-        $updateApplicationsSQL = "UPDATE applications SET app_name = $appName, app_startDate = $startDate, app_endDate = $endDate, app_files_link = $propUrl WHERE application_id = $appId";
+        $updateApplicationsSQL = "UPDATE applications SET app_name = $appName, app_startDate = $startDate, app_endDate = $endDate, app_time = $time, app_files_link = $propUrl WHERE application_id = $appId";
         $trackingSystemComment = "Application was updated by student.";
 
         //mysql code here

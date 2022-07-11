@@ -67,7 +67,8 @@
             }
         ?>
         <script type="text/javascript">
-            document.getElementById("startDate").min = "<?php echo date("Y-m-d") ?>"
+            var today = "<?php echo date("Y-m-d") ?>"
+            document.getElementById("startDate").min = today;
             function doUpdateMinDate(obj){
                 document.getElementById("endDate").min = obj.value
             }
