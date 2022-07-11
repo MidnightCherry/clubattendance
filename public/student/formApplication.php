@@ -66,6 +66,12 @@
                 echo "</div>";
             }
         ?>
+        <script type="text/javascript">
+            document.getElementById("startDate").min = "<?php echo date("Y-m-d") ?>"
+            function doUpdateMinDate(obj){
+                document.getElementById("endDate").min = obj.value
+            }
+        </script>
         <div class="container px-5">
             <h1 class="pb-4">New Activity Application</h1>
             <p>Please fill in the form below.</p>
@@ -100,12 +106,6 @@
         <?php
             include("../../header/footer.php");
         ?>
-        <script type="text/javascript">
-            document.getElementById("startDate").min = <?php echo date("Y-m-d") ?>
-            function doUpdateMinDate(obj){
-                document.getElementById("endDate").min = obj.value
-            }
-        </script>
         <!-- JavaScript Bundle with Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     </body>
