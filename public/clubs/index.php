@@ -25,30 +25,32 @@
         ?>
         <div class="px-5">
             <p>Here, you can find the list of clubs available.</p>
-            <?php
-                require_once "../inc/connect.php";
+            <div class="bg-white p-4 rounded-4 shadow">
+                <?php
+                    require_once "../inc/connect.php";
 
-                //get clublist
-                $getClubSQL = "SELECT * FROM clubs";
-                $clubRes = mysqli_query($conn, $getClubSQL);
-                if(!is_bool($clubRes)){
-                    $clubArr = mysqli_fetch_all($clubRes);
-                    $clubArr = array_values($clubArr);
-                    echo "<table class=\"table bg-white rounded-top shadow\"><tr><th scope=\"col\">#</th><th scope=\"col\">Club ID</th><th scope=\"col\">Club Name</th><th scope=\"col\">Club Type</th></tr>";
-                    $tableIndex = 1;
-                    foreach($clubArr as $currClub){
-                        echo "<tr><th scope=\"row\">$tableIndex</th>";
-                        $tableIndex++;
-                        foreach($currClub as $currField){
-                            echo "<td>$currField</td>";
+                    //get clublist
+                    $getClubSQL = "SELECT * FROM clubs";
+                    $clubRes = mysqli_query($conn, $getClubSQL);
+                    if(!is_bool($clubRes)){
+                        $clubArr = mysqli_fetch_all($clubRes);
+                        $clubArr = array_values($clubArr);
+                        echo "<table class=\"table\"><tr><th scope=\"col\">#</th><th scope=\"col\">Club ID</th><th scope=\"col\">Club Name</th><th scope=\"col\">Club Type</th></tr>";
+                        $tableIndex = 1;
+                        foreach($clubArr as $currClub){
+                            echo "<tr><th scope=\"row\">$tableIndex</th>";
+                            $tableIndex++;
+                            foreach($currClub as $currField){
+                                echo "<td>$currField</td>";
+                            }
+                            echo "</tr>";
                         }
-                        echo "</tr>";
+                        echo "</table>";
+                    } else {
+                        echo "ERROR";
                     }
-                    echo "</table>";
-                } else {
-                    echo "ERROR";
-                }
-            ?>
+                ?>
+            <div>
         </div>
         <?php
             include("../../header/footer.php");
