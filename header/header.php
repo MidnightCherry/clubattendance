@@ -99,8 +99,8 @@
                     echo "<label class=\"px-2\">Welcome, <a class=\"text-decoration-none\" href=/".$url."/>".$shortName."</a>!</label>";
                     echo '<button type="button" class="btn btn-danger" onclick="location.href=\'/doSignOut.php\';">Logout</button>';
                 } else {
-                    echo '<button type="button" class="btn btn-primary px-2" data-bs-toggle="modal" data-bs-target="#loginModal">Log In</button>';
-                    echo '<button type="button" class="btn btn-primary" onclick="location.href=\'/login.php\'">Sign Up</button>';
+                    echo '<button type="button" class="btn btn-primary mx-1" data-bs-toggle="modal" data-bs-target="#loginModal">Sign In</button>';
+                    echo '<button type="button" class="btn btn-primary mx-1" onclick="location.href=\'/login.php\'">Sign Up</button>';
                 }
             ?>
         </div>
