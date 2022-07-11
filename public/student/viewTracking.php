@@ -86,7 +86,7 @@
                 echo "</div>";
             }
         ?>
-        <div class="mx-4 px-4 py-4 bg-white rounded-4 shadow">
+        <div class="mx-5 px-4 py-4 bg-white rounded-4 shadow">
             <table id="appTable" class="table table-bordered table-hover dt-responsive">
                 <thead>
                     <tr>
