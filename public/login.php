@@ -25,10 +25,10 @@ $_SESSION["backPage"] = basename($_SERVER['PHP_SELF']);
         </div>
         <ul class="container px-4 nav nav-pills mt-4" id="pills-tab" role="tablist">
             <li class="nav-item px-2" role="presentation">
-                <button class="nav-link active" id="pills-signin-tab" data-bs-toggle="pill" data-bs-target="#pills-signin" type="button" role="tab" aria-controls="pills-signin" aria-selected="true">Sign In</button>
+                <button class="nav-link" id="pills-signin-tab" data-bs-toggle="pill" data-bs-target="#pills-signin" type="button" role="tab" aria-controls="pills-signin" aria-selected="false">Sign In</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="pills-signup-tab" data-bs-toggle="pill" data-bs-target="#pills-signup" type="button" role="tab" aria-controls="pills-signup" aria-selected="false">Sign Up</button>
+                <button class="nav-link active" id="pills-signup-tab" data-bs-toggle="pill" data-bs-target="#pills-signup" type="button" role="tab" aria-controls="pills-signup" aria-selected="true">Sign Up</button>
             </li>
         </ul>
         <div class="tab-content" id="pills-tabContent">
@@ -57,7 +57,7 @@ $_SESSION["backPage"] = basename($_SERVER['PHP_SELF']);
                     echo "</div>";
                 }
             ?>
-            <div class="tab-pane fade show active" id="pills-signin" role="tabpanel" aria-labelledby="pills-signin-tab" tabindex="0">
+            <div class="tab-pane fade" id="pills-signin" role="tabpanel" aria-labelledby="pills-signin-tab" tabindex="0">
                 <div class="container px-5 my-4">
                     <h3>Sign In</h3>
                     <p>Please enter the email and password to continue.</p>
@@ -76,7 +76,7 @@ $_SESSION["backPage"] = basename($_SERVER['PHP_SELF']);
                     </form>
                 </div>
             </div>
-            <div class="tab-pane fade" id="pills-signup" role="tabpanel" aria-labelledby="pills-signup-tab" tabindex="0">
+            <div class="tab-pane fade show active" id="pills-signup" role="tabpanel" aria-labelledby="pills-signup-tab" tabindex="0">
                 <div class="container px-5 my-4">
                     <h3>Sign Up (Attendees Only)</h3>
                     <p>This form is for attendees only. Club Representatives and Officers can contact the administrator for help. Please fill in this form to continue.</p>
