@@ -25,7 +25,7 @@
         ?>
         <div class="px-5">
             <p>Here, you can find the list of clubs available.</p>
-            <div class="bg-white p-4 rounded-4 shadow">
+            <div class="bg-white p-4 rounded-4 shadow table-responsive">
                 <?php
                     require_once "../inc/connect.php";
 
