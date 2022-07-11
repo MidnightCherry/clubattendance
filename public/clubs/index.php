@@ -31,7 +31,7 @@
                 if(!is_bool($clubRes)){
                     $clubArr = mysqli_fetch_all($clubRes);
                     $clubArr = array_values($clubArr);
-                    echo "<table class=\"table\"><tr><th scope=\"col\">#</th><th scope=\"col\">Club ID</th><th scope=\"col\">Club Name</th><th scope=\"col\">Club Type</th></tr>";
+                    echo "<table class=\"table bg-white rounded-top shadow\"><tr><th scope=\"col\">#</th><th scope=\"col\">Club ID</th><th scope=\"col\">Club Name</th><th scope=\"col\">Club Type</th></tr>";
                     $tableIndex = 1;
                     foreach($clubArr as $currClub){
                         echo "<tr><th scope=\"row\">$tableIndex</th>";
