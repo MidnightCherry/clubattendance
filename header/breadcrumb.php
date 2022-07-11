@@ -137,7 +137,7 @@
         $crumbStr = $bcmb->getCrumbArray();
         $crumbUrl = $bcmb->getCurrentUrl();
         $crumbStrC = count($crumbStr);
-        echo "<div class=\"py-4\"><nav class=\"mx-4 px-4 py-4 bg-white shadow rounded-4\" style=\"--bs-breadcrumb-divider: '>';\" aria-label=\"breadcrumb\">
+        echo "<div class=\"py-4\"><nav class=\"mx-4 px-4 py-2 bg-white shadow rounded-4\" style=\"--bs-breadcrumb-divider: '>';\" aria-label=\"breadcrumb\">
         <ol class=\"breadcrumb my-2\">";
         foreach($crumbStr as $currPage){
             if($i != ($crumbStrC-1)){
