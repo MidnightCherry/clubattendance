@@ -11,6 +11,9 @@
         padding-bottom: 6rem;
         min-height: 100%;
     }
+    .btn-white{
+        background-color: #ffffff;
+    }
     .btn-primary{
         background-color: #7700ff;
         border-color: #7700dd;
@@ -33,6 +36,13 @@
     }
     label, .form-control {
         color: #000000; 
+    }
+    .nav-link[aria-selected="true"]{
+        background-color: #ffffff;
+        color: #7700dd;
+    }
+    .nav-link[aria-selected="false"]{
+        color: #ffffff;
     }
     .footer {
         position: absolute;
