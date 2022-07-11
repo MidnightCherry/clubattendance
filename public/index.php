@@ -14,17 +14,13 @@
         <?php
             include("../header/header.php");
         ?>
-        <div class="px-5 text-center">
-            <h1>Welcome to UiTM Club Activities Attendance System</h1>
-        </div>
-        <br>
-        <div id="carouselExampleIndicators" class="carousel slide min-w-75 w-100" data-bs-ride="carousel" style="margin-left: auto; margin-right: auto; padding-left: 10%; padding-right: 10%;">
+        <div id="carouselExampleIndicators" class="carousel slide min-w-75 w-100" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
-            <div class="carousel-inner">
+            <div class="carousel-inner shadow-lg">
                 <div class="carousel-item active">
                     <img src="https://i.ytimg.com/vi/kvmIhf7PCHs/maxresdefault.jpg" class="d-block min-vh-50 vh-75 w-100" alt="First Image">
                 </div>
@@ -45,7 +41,7 @@
             </button>
         </div>
         <div class="px-5 py-4">
-            <h4 style="text-align: justify; text-justify: inter-word;">The UiTM Club Activities Attendance System aims to help streamline club activities application process.</h4>
+            <h4 style="text-align: justify; text-justify: inter-word;">The UiTM Club Activities Attendance System aims to help streamline club activities attendance process.</h4>
         </div>
         <?php
             include("../header/footer.php");
