@@ -76,11 +76,11 @@
                 </div>
                 <div class="form-floating row">
                     <div class="form-floating col mb-3 pe-2">
-                        <input class="form-control" name="startDate" type="date" placeholder="Start Date" required/>
+                        <input class="form-control" id="startDate" name="startDate" type="date" onchange="doUpdateMinDate(this)" placeholder="Start Date" required/>
                         <label class="px-4" for="startDate">Start Date</label>
                     </div>
                     <div class="form-floating col mb-3 ps-2">
-                        <input class="form-control" name="endDate" type="date" placeholder="End Date" required/>
+                        <input class="form-control" id="endDate" name="endDate" type="date" placeholder="End Date" required/>
                         <label class="px-4" for="endDate">End Date</label>
                     </div>
                 </div>
@@ -100,6 +100,12 @@
         <?php
             include("../../header/footer.php");
         ?>
+        <script type="text/javascript">
+            document.getElementById("startDate").min = <?php echo date("Y-m-d") ?>
+            function doUpdateMinDate(obj){
+                document.getElementById("endDate").min = obj.value
+            }
+        </script>
         <!-- JavaScript Bundle with Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     </body>
