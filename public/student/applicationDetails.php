@@ -101,8 +101,6 @@
                 }
             ?>
             <script type="text/javascript">
-                var today = "<?php echo date("Y-m-d") ?>"
-                document.getElementById("startDate").min = today;
                 function doUpdateMinDate(obj){
                     document.getElementById("endDate").min = obj.value
                 }
@@ -113,7 +111,7 @@
                     <label for="applicationName">Application Name</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input class="form-control" name="startDate" id="startDate" type="date" onchange="doUpdateMinDate(this)" value="<?php echo $thisApp[1] ?>"  placeholder="Start Date" required/>
+                    <input class="form-control" name="startDate" id="startDate" type="date" min="<?php echo date("Y-m-d") ?>" onchange="doUpdateMinDate(this)" value="<?php echo $thisApp[1] ?>"  placeholder="Start Date" required/>
                     <label for="startDate">Start Date</label>
                 </div>
                 <div class="form-floating mb-3">
