@@ -176,6 +176,9 @@
         ?>
     })
     $('#loginModal').on('hidden.bs.modal', function(){
-        window.history.replaceState({}, document.title, '/<?php echo $backPage?>');
+        let url = new URL(window.location.href);
+        url.searchParams.delete('error');
+        url.searchParams.delete('signup');
+        window.history.pushState({}, document.title, url);
     })
 </script>
