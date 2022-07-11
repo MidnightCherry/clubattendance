@@ -11,13 +11,13 @@
         padding-bottom: 6rem;
         min-height: 100%;
     }
-    .btn-primary-login{
+    .btn-primary{
         background-color: #7700ff;
     }
-    .btn-primary-login:hover{
+    .btn-primary:hover{
         background-color: #7700dd;
     }
-    .btn-primary-login:active{
+    .btn-primary:active{
         background-color: #7700cc;
     }
     .bg-uitm{
@@ -67,7 +67,7 @@
                     echo "<label class=\"px-2\">Welcome, <a class=\"text-decoration-none\" href=/".$url."/>".$shortName."</a>!</label>";
                     echo '<button type="button" class="btn btn-danger" onclick="location.href=\'/doSignOut.php\';">Logout</button>';
                 } else {
-                    echo '<button type="button" class="btn btn-primary-login" onclick="location.href=\'/login.php\'">Login</button>';
+                    echo '<button type="button" class="btn btn-primary" onclick="location.href=\'/login.php\'">Login</button>';
                 }
             ?>
         </div>
