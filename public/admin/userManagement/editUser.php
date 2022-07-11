@@ -179,9 +179,9 @@
                 //if var
                 $textCompVar;
                 if($userType == 0){
-                    $textCompVar = "($('#clublist').val() == ".$thisApp[3].") ||";
+                    $textCompVar = "($('#clublist').val() != ".$thisApp[3].") ||";
                 } else if($userType == 3){
-                    $textCompVar = "($('#courseCode').val() == ".$thisApp[3].") ||";
+                    $textCompVar = "($('#courseCode').val() != ".$thisApp[3].") ||";
                 } else {
                     $textCompVar = "";
                 }
