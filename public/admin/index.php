@@ -21,8 +21,8 @@
         <?php
             include("../../header/header.php");
         ?>
-        <div class="px-5">
-            <div class="row text-center">
+        <div class="mx-5 px-4 my-2 py-3 bg-white text-dark rounded-4 shadow-lg">
+            <div class="row text-center bg-uitm rounded-4 text-white py-4">
                 <h1>Admin Portal</h1>
             </div>
             <div class="row py-3">

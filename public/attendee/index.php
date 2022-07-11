@@ -21,11 +21,11 @@
         <?php
             include("../../header/header.php");
         ?>
-        <div class="px-5">
-            <div class="text-center">
+        <div class="mx-5 px-4 my-2 py-3 bg-white text-dark rounded-4 shadow-lg">
+            <div class="row text-center bg-uitm rounded-4 text-white py-4">
                 <h1>Attendee Portal</h1>
             </div>
-            <div class="py-3">
+            <div class="row py-3">
                 <h4>Welcome, <?php echo $_SESSION["name"] ?> to the attendee portal</h4>
             </div>
             <div>
