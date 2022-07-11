@@ -15,16 +15,12 @@
         <div class="px-5 text-center">
             <h1>About the UiTM Club Activities Attendance System</h1>
         </div>
-        <nav class="px-5 py-4" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <?php
-                    $currDir = $_SERVER['PHP_SELF'];
-                    $currUrl = $_SERVER['PHP_HOST'];
-                    $pageTitle = "About Us";
-                    include('../header/breadcrumb.php');
-                ?>
-            </ol>
-        </nav>
+        <?php
+            $currDir = $_SERVER['PHP_SELF'];
+            $currUrl = $_SERVER['PHP_HOST'];
+            $pageTitle = "About Us";
+            include('../header/breadcrumb.php');
+        ?>
         <div class="px-5 py-4">
             <h4 style="text-align: justify; text-justify: inter-word;">The UiTM Club Activities Attendance System aims to help streamline club activities attendance process.
             This system was created to ease the process of club activity attendance. The system features a lot of useful features which would enable the users to easily mark

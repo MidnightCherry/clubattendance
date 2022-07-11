@@ -52,17 +52,11 @@
         </script>
         <?php
             include("../../header/header.php");
+            $currDir = "/student/applicationList.php/viewTracking.php";
+            $currUrl = $_SERVER['PHP_HOST'];
+            $pageTitle = "View Tracking";
+            include('../../header/breadcrumb.php');
         ?>
-        <nav class="px-5 py-4" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <?php
-                    $currDir = "/student/applicationList.php/viewTracking.php";
-                    $currUrl = $_SERVER['PHP_HOST'];
-                    $pageTitle = "View Tracking";
-                    include('../../header/breadcrumb.php');
-                ?>
-            </ol>
-        </nav>
         <div class="px-5">
             <h4>View Tracking</h4>
         </div>

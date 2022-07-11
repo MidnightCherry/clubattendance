@@ -137,6 +137,8 @@
         $crumbStr = $bcmb->getCrumbArray();
         $crumbUrl = $bcmb->getCurrentUrl();
         $crumbStrC = count($crumbStr);
+        echo "<nav class=\"mx-4 px-4 py-4 bg-white shadow rounded-4\" style=\"--bs-breadcrumb-divider: '>';\" aria-label=\"breadcrumb\">
+        <ol class=\"breadcrumb\">";
         foreach($crumbStr as $currPage){
             if($i != ($crumbStrC-1)){
                 echo "<li class=\"breadcrumb-item\" aria-current=\"page\"><a href=\"".$crumbUrl[$i]."\">".$currPage."</a></li>";
@@ -149,6 +151,8 @@
                 $i++;
             }
         }
+        echo "</ol>
+        </nav>";
     } else {
         $bcmb = new Breadcrumb(__DIR__, "test");
         print_r($bcmb->debugVariables());

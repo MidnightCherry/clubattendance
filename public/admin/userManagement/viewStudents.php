@@ -86,17 +86,11 @@
         </div>
         <?php
             include("../../../header/header.php");
+            $currDir = $_SERVER['PHP_SELF'];
+            $currUrl = $_SERVER['PHP_HOST'];
+            $pageTitle = "Student List";
+            include('../../../header/breadcrumb.php');
         ?>
-        <nav class="px-5 py-4" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <?php
-                    $currDir = $_SERVER['PHP_SELF'];
-                    $currUrl = $_SERVER['PHP_HOST'];
-                    $pageTitle = "Student List";
-                    include('../../../header/breadcrumb.php');
-                ?>
-            </ol>
-        </nav>
         <div class="px-5">
             <h4>View Students</h4>
         </div>

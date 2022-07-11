@@ -31,17 +31,11 @@
         <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
         <?php
             include("../../header/header.php");
+            $currDir = "/admin/applicationList.php/applicationDetails.php";
+            $currUrl = $_SERVER['PHP_HOST'];
+            $pageTitle = "Application Details";
+            include('../../header/breadcrumb.php');
         ?>
-        <nav class="px-5 py-4" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <?php
-                    $currDir = "/admin/applicationList.php/applicationDetails.php";
-                    $currUrl = $_SERVER['PHP_HOST'];
-                    $pageTitle = "Application Details";
-                    include('../../header/breadcrumb.php');
-                ?>
-            </ol>
-        </nav>
         <div class="container px-5">
             <h1 class="pb-4">Club Application Details</h1>
             <?php

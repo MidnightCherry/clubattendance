@@ -59,17 +59,11 @@
         </script>
         <?php
             include("../../header/header.php");
+            $currDir = "/student/applicationList.php/attendanceList.php";
+            $currUrl = $_SERVER['PHP_HOST'];
+            $pageTitle = "Attendance List";
+            include('../../header/breadcrumb.php');
         ?>
-        <nav class="px-5 py-4" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <?php
-                    $currDir = "/student/applicationList.php/attendanceList.php";
-                    $currUrl = $_SERVER['PHP_HOST'];
-                    $pageTitle = "Attendance List";
-                    include('../../header/breadcrumb.php');
-                ?>
-            </ol>
-        </nav>
         <div class="px-5">
             <h4>View Attendances</h4>
         </div>
