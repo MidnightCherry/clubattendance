@@ -37,11 +37,11 @@
     label, .form-control {
         color: #000000; 
     }
-    .nav-link[aria-selected="true"]{
+    .nav-link[tabindex="-1"]{
         background-color: #ffffff;
         color: #7700dd;
     }
-    .nav-link[aria-selected="false"]{
+    .nav-link{
         color: #ffffff;
     }
     .footer {
