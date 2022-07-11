@@ -168,7 +168,11 @@
         <script type="text/javascript">
             var xmlhttp = new XMLHttpRequest();
             var url = "/clubs/getClubId.php";
-            var currClub = <?php echo $thisApp[3] ?>;
+            <?php
+                if($userType == 0){
+                    echo "var currClub = ".$thisApp[3];
+                }
+            ?>
             var role = <?php echo $userType ?>;
 
             if(role == 0) {
@@ -208,7 +212,7 @@
             xmlhttp.send();
             $(document).ready(function() {
                 $('#updateForm').on('input change', function() {
-                    if(($('#name').val() != "<?php echo $thisApp[0] ?>") || ($('#email').val() != "<?php echo $thisApp[1] ?>") || ($('#telephone').val() != "<?php echo $thisApp[2] ?>") || ($('#clubid').val() != "<?php echo $thisApp[3] ?>") || ($('#clubid').val() != "<?php echo $thisApp[3] ?>") || ($('#password').val().length >= 1)){
+                    if(($('#name').val() != "<?php echo $thisApp[0] ?>") || ($('#email').val() != "<?php echo $thisApp[1] ?>") || ($('#telephone').val() != "<?php echo $thisApp[2] ?>") || ($('#password').val().length >= 1) <?php if($userType == 0){echo "|| ($('#clublist).val() == ".$thisApp[3].")";} else if($userType == 1){echo "|| ($('#courseCode').val() == ".$thisApp[3].")";} ?>){
                         $('#submitButton').attr('disabled', false);
                     } else {
                         $('#submitButton').attr('disabled', true);
