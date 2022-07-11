@@ -37,11 +37,11 @@
     label, .form-control {
         color: #000000; 
     }
-    .nav-link[tabindex="-1"]{
+    .nav-link{
         background-color: #ffffff;
         color: #7700dd;
     }
-    .nav-link{
+    .nav-link[tabindex="-1"]{
         color: #ffffff;
     }
     .footer {
