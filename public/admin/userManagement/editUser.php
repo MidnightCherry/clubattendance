@@ -217,6 +217,8 @@
                             echo "|| ($('#clublist).val() == ".$thisApp[3].")";
                         } else if($userType == 3){
                             echo "|| ($('#courseCode').val() == ".$thisApp[3].")";
+                        } else {
+                            echo "";
                         }
                     ?>){
                         $('#submitButton').attr('disabled', false);
