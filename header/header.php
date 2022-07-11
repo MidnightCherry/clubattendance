@@ -19,7 +19,7 @@
         border-color: #7700dd;
     }
     .btn-primary:hover{
-        background-color: #7700dd;
+        background-color: #ffffff;
         border-color: #7700dd;
     }
     .btn-primary:active{
