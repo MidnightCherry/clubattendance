@@ -37,16 +37,16 @@
     label, .form-control {
         color: #000000; 
     }
-    .nav-link.active,
-    .show > .nav-link{
-        background-color: #ffffff;
-        color: #7700dd;
-    }
     .nav-link{
         color: #ffffff;
     }
     .nav-link:hover{
         color: #ffffff;
+    }
+    .nav-pills .nav-link.active,
+    .nav-pills .show > .nav-link{
+        background-color: #ffffff;
+        color: #7700dd;
     }
     .footer {
         position: absolute;
