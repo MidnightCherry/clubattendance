@@ -26,7 +26,7 @@
     $_SESSION["editing_user_type"] = $_GET["type"];
     $userType = $_GET["type"];
     $userId = $_GET["user_id"];
-    $_SESSION["backPage"] = "editUser.php?type=$userType&user_id=$userId";
+    $_SESSION["backPage"] = "editUser.php?type=".$userType."&user_id=".$userId;
 ?>
 <!DOCTYPE html>
 <html lang="en">
