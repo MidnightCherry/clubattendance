@@ -206,44 +206,48 @@
                         $_SESSION["tel"] = $officerTel;
                         $_SESSION["officer_id"] = $officerId;
                         header("refresh:0;url=/officer/index.php");
-                    }
-                } else if ($userType == 3){
-                    //officer
-                    $getAttendeeInfoSQL = "SELECT attendee_id, attendee_name, attendee_telno, attendee_course FROM attendees WHERE user_id = (?)";
-                    if ($stmt=mysqli_prepare($conn, $getAttendeeInfoSQL)){
-                        mysqli_stmt_bind_param($stmt, "i", $u_id);
+                    } else if ($userType == 3){
+                        //officer
+                        $getAttendeeInfoSQL = "SELECT attendee_id, attendee_name, attendee_telno, attendee_course FROM attendees WHERE user_id = (?)";
+                        if ($stmt=mysqli_prepare($conn, $getAttendeeInfoSQL)){
+                            mysqli_stmt_bind_param($stmt, "i", $u_id);
 
-                        $u_id = $userId;
+                            $u_id = $userId;
 
-                        if(mysqli_stmt_execute($stmt)){
-                            $attendeeArray = mysqli_fetch_array(mysqli_stmt_get_result($stmt));
-                            $attendeeId = $attendeeArray["attendee_id"];
-                            $attendeeName = $attendeeArray["attendee_name"];
-                            $attendeeTel = $attendeeArray["attendee_telno"];
-                            $attendeeCourse = $attendeeArray["attendee_course"];
-                            //echo "SUCCESS QUERY USERS TABLE!<br>";
-                        } else {
-                            $_SESSION["userErrCode"] = "MYSQL_ERROR";
-                            $_SESSION["userErrMsg"] = "MySQL error encountered: ".mysqli_error($conn)." Please contact the administrator if you believe that this should not happen.";
-                            header("refresh:0;url=$backPage?error=true");
-                            //echo "MYSQL ERROR QUERY USERS TABLE! ".mysqli_error($conn);
+                            if(mysqli_stmt_execute($stmt)){
+                                $attendeeArray = mysqli_fetch_array(mysqli_stmt_get_result($stmt));
+                                $attendeeId = $attendeeArray["attendee_id"];
+                                $attendeeName = $attendeeArray["attendee_name"];
+                                $attendeeTel = $attendeeArray["attendee_telno"];
+                                $attendeeCourse = $attendeeArray["attendee_course"];
+                                //echo "SUCCESS QUERY USERS TABLE!<br>";
+                            } else {
+                                $_SESSION["userErrCode"] = "MYSQL_ERROR";
+                                $_SESSION["userErrMsg"] = "MySQL error encountered: ".mysqli_error($conn)." Please contact the administrator if you believe that this should not happen.";
+                                header("refresh:0;url=$backPage?error=true");
+                                //echo "MYSQL ERROR QUERY USERS TABLE! ".mysqli_error($conn);
+                            }
+
+                            mysqli_stmt_close($stmt);
                         }
-
-                        mysqli_stmt_close($stmt);
+                        $_SESSION["utype"] = "attendee";
+                        $_SESSION["email"] = $email;
+                        $_SESSION["uid"] = $userId;
+                        $_SESSION["name"] = $attendeeName;
+                        $_SESSION["tel"] = $attendeeTel;
+                        $_SESSION["attendee_id"] = $attendeeId;
+                        header("refresh:0;url=/attendee/index.php");
+                    } else {
+                        $_SESSION["userErrCode"] = "WRONG_CREDS";
+                        $_SESSION["userErrMsg"] = "Invalid username or password. Please re-enter the credentials";
+                        header("refresh:0;url=$backPage?error=true");
+                        //echo '<script>alert("Wrong password. Returning to login page...")</script>';
+                        //header("refresh:0;url=$backPage");
                     }
-                    $_SESSION["utype"] = "attendee";
-                    $_SESSION["email"] = $email;
-                    $_SESSION["uid"] = $userId;
-                    $_SESSION["name"] = $attendeeName;
-                    $_SESSION["tel"] = $attendeeTel;
-                    $_SESSION["attendee_id"] = $attendeeId;
-                    header("refresh:0;url=/attendee/index.php");
                 } else {
                     $_SESSION["userErrCode"] = "WRONG_CREDS";
                     $_SESSION["userErrMsg"] = "Invalid username or password. Please re-enter the credentials";
                     header("refresh:0;url=$backPage?error=true");
-                    //echo '<script>alert("Wrong password. Returning to login page...")</script>';
-                    //header("refresh:0;url=$backPage");
                 }
             } else {
                 mysqli_close($conn);
