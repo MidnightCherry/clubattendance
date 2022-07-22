@@ -41,7 +41,7 @@
                                     },
                                     fixedHeader: true
                                 });
-                $("#appTable tbody").on('click', 'button', function() {
+                /**$("#appTable tbody").on('click', 'button', function() {
                     var data = mainTable.row($(this).parents('tr')).data();
 
                     var button = this.id;
@@ -54,6 +54,18 @@
                     if(button == "viewAttButton"){
                         window.location.href = "attendanceList.php?app_id="+data[0];
                     }
+                })**/
+                $("#appTable tbody").on('click', '#viewAppButton', function() {
+                    var data = mainTable.row($(this).parents('tr')).data();
+                    window.location.href = "applicationDetails.php?app_id="+data[0];
+                })
+                $("#appTable tbody").on('click', '#viewTrkButton', function() {
+                    var data = mainTable.row($(this).parents('tr')).data();
+                    window.location.href = "viewTracking.php?app_id="+data[0];
+                })
+                $("#appTable tbody").on('click', '#viewAttButton', function() {
+                    var data = mainTable.row($(this).parents('tr')).data();
+                    window.location.href = "attendanceList.php?app_id="+data[0];
                 })
             } );
         </script>
