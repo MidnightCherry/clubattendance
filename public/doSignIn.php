@@ -75,7 +75,42 @@
                     mysqli_stmt_close($stmt);
                 }
 
-                // Validate password
+                
+// Validate email format
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $_SESSION["userErrCode"] = "INVALID_EMAIL";
+    $_SESSION["userErrMsg"] = "Email format is invalid. Please provide a valid email address.";
+    header("refresh:0;url=$backPage?error=true");
+    die();
+}
+
+// Validate password
+// Password complexity checks
+if (!preg_match("/[A-Z]/", $password)) {
+    $_SESSION["userErrCode"] = "WEAK_PASSWORD";
+    $_SESSION["userErrMsg"] = "Password should contain at least one uppercase letter.";
+    header("refresh:0;url=$backPage?error=true");
+    die();
+}
+if (!preg_match("/[a-z]/", $password)) {
+    $_SESSION["userErrCode"] = "WEAK_PASSWORD";
+    $_SESSION["userErrMsg"] = "Password should contain at least one lowercase letter.";
+    header("refresh:0;url=$backPage?error=true");
+    die();
+}
+if (!preg_match("/[0-9]/", $password)) {
+    $_SESSION["userErrCode"] = "WEAK_PASSWORD";
+    $_SESSION["userErrMsg"] = "Password should contain at least one number.";
+    header("refresh:0;url=$backPage?error=true");
+    die();
+}
+if (!preg_match("/[!@#$%^&*]/", $password)) {
+    $_SESSION["userErrCode"] = "WEAK_PASSWORD";
+    $_SESSION["userErrMsg"] = "Password should contain at least one special character (!@#$%^&*).";
+    header("refresh:0;url=$backPage?error=true");
+    die();
+}
+
                 if(empty(trim($_POST["signInPassword"]))){
                     $password_err = "Please enter a password.";
                     die(/*$password_err*/);

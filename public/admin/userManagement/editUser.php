@@ -132,7 +132,7 @@
                     die();
                 }
             ?>
-            <form id="updateForm" action="./doUpdateUser.php" method="post">
+            <form id="updateForm" action="./userManagement/doUpdateUser.php" method="post">
                 <div class="form-floating mb-3">
                     <input class="form-control" name="name" id="name" type="text" value="<?php echo $thisApp[0] ?>" placeholder="Application Name" required/>
                     <label for="name">Name</label>

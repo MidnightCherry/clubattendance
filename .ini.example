@@ -1,4 +1,4 @@
 server = "localhost"
-username = "example"
-password = "password"
+username = "root"
+password = ""
 database = "cscproj"

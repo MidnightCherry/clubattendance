@@ -1,0 +1,14 @@
+
+v1.5.9 Updates (YYYY-MM-DD) [Replace with actual date]
+------------------------------------------
+1. Enhanced security in doSignIn.php:
+   - Added comprehensive email validation.
+   - Strengthened password validation checks to ensure complexity.
+
+2. Inspected doSignUp.php:
+   - Confirmed the use of prepared statements for secure database operations.
+   - Verified password hashing for secure storage.
+   - Checked role-based logic for data insertion.
+
+3. General:
+   - Disabled error reporting in production code for better security.

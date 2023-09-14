@@ -76,6 +76,12 @@
                 }
 
                 //echo "<p>Please wait for a few seconds.</p>";
+            // Check if "email" is set in $_POST
+            if (!isset($_POST["email"])) {
+                header("Location: login.php?error=Email is required.");
+                exit();
+            }
+
                 $email = $_POST["email"];
                 if(empty(trim($_POST["email"]))){
                     $_SESSION["userErrCode"] = "INVALID_EMAIL";

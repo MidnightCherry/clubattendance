@@ -1,0 +1,26 @@
+
+v1.5.9 Updates (10-Aug-2023)
+------------------------------------------
+1. Enhanced security in doSignIn.php:
+   - Added comprehensive email validation.
+   - Strengthened password validation checks to ensure complexity.
+
+2. Inspected doSignUp.php:
+   - Confirmed the use of prepared statements for secure database operations.
+   - Verified password hashing for secure storage.
+   - Checked role-based logic for data insertion.
+
+3. General:
+   - Disabled error reporting in production code for better security.
+
+v1.6.0 Updates (11-Aug-2023)
+------------------------------------------
+
+1. Updated references to './doUpdateUser.php' to './userManagement/doUpdateUser.php' for correct path resolution.
+2. Created flag_keywords table in the database schema to store keywords that trigger automatic flagging of posts.
+3. Planned and outlined forum functionality to be in line with the original theme.
+4. Updated privileges for admin and moderators for reviewing flagged posts.
+5. Created forum landing page (forumLanding.php) that aligns with the original theme.
+6. Developed admin interface (manageKeywords.php) for managing flagged keywords and phrases.
+7. Integrated automatic flagging mechanism in post creation.
+8. Implemented admin/moderator actions in forumLanding.php for approving, removing posts, and suspending users.

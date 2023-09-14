@@ -63,15 +63,15 @@ $_SESSION["backPage"] = basename($_SERVER['PHP_SELF']);
                     <p>Please enter the email and password to continue.</p>
                     <form id="loginForm" action="doSignIn.php" method="post">
                         <div class="form-floating mb-3">
-                            <input class="form-control" name="signInEmail" type="email" placeholder="Email Address" required/>
+                            <input class="form-control" name="signInEmail" type="email" placeholder="Enter your email" required/>
                             <label for="emailAddress">Email Address</label>
                         </div>
-                        <div class="form-floating mb-3">
+                            <input class="form-control" name="signInPassword" type="password" placeholder="Enter your password" required/>
                             <input class="form-control" name="signInPassword" type="password" placeholder="Password" required/>
                             <label for="password">Password</label>
                         </div>
                         <div class="d-grid">
-                            <button class="btn btn-primary btn-lg" id="signInButton" type="submit">Sign In</button>
+                            <button class="btn btn-primary btn-lg btn-block" id="signInButton" type="submit">Sign In</button>
                         </div>
                     </form>
                 </div>
@@ -82,22 +82,22 @@ $_SESSION["backPage"] = basename($_SERVER['PHP_SELF']);
                     <p>This form is for attendees only. Club Representatives and Officers can contact the administrator for help. Please fill in this form to continue.</p>
                     <form id="signupForm" action="doSignUp.php" method="post">
                         <div class="form-floating mb-3">
-                            <input class="form-control" name="email" type="email" placeholder="Email Address" required/>
+                            <input class="form-control" name="email" type="email" placeholder="Enter your email" required/>
                             <label for="emailAddress">Email Address</label>
                         </div>
-                        <div class="form-floating mb-3">
+                            <input class="form-control" name="password" type="password" placeholder="Enter a password" required/>
                             <input class="form-control" name="password" type="password" placeholder="Password" required/>
                             <label for="password">Password</label>
-                        </div>
+                            <input class="form-control" name="confirmPassword" type="password" placeholder="Confirm your password" required/>
                         <div class="form-floating mb-3">
                             <input class="form-control" name="confirmPassword" type="password" placeholder="Confirm Password" required/>
-                            <label for="password">Confirm Password</label>
+                            <input class="form-control" name="name" type="text" placeholder="Enter your name" required/>
                         </div>
                         <div class="form-floating mb-3">
-                            <input class="form-control" name="name" type="text" placeholder="Name" required/>
+                            <input class="form-control" name="telephone" type="text" placeholder="Enter your telephone number" onkeydown='{(evt) => ["e", "E", "-"].includes(evt.key) && evt.preventDefault()}' required/>
                             <label for="name">Name</label>
                         </div>
-                        <div class="form-floating mb-3">
+                            <input class="form-control" name="courseCode" type="text" placeholder="Enter your course code" required/>
                             <input class="form-control number" name="telephone" type="text" placeholder="Telephone" onkeydown='{(evt) => ["e", "E", "-"].includes(evt.key) && evt.preventDefault()}' required/>
                             <label for="telephone">Telephone</label>
                         </div>
@@ -117,7 +117,7 @@ $_SESSION["backPage"] = basename($_SERVER['PHP_SELF']);
                             <label for="role">Role</label>
                         </div>
                         <div class="d-grid">
-                            <button class="btn btn-primary btn-lg" id="signUpButton" type="submit">Sign Up</button>
+                            <button class="btn btn-primary btn-lg btn-block" id="signUpButton" type="submit">Sign Up</button>
                         </div>
                     </form>
                 </div>
